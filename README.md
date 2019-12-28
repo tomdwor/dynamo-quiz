@@ -22,6 +22,11 @@ npm run build
 npm run lint
 ```
 
+### Linter auto fixes
+```
+npm run lint --fix
+```
+
 ### Run your end-to-end tests
 ```
 npm run test:e2e
