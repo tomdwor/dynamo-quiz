@@ -4,12 +4,23 @@
 
 Basic version of application.
 
+- [x] setup Vue/Vuetify app
+- [ ] common template
+    - [ ] separate Vue components
+        - [ ] main top navigation
+        - [ ] quiz top navigation (quiz name, exit button)
+        - [ ] main footer (not fixed)
+        - [ ] quiz footer (fixed)
+    - [ ] display proper top navigation and footer for given page
 - [ ] quiz template
+    - [ ] template with question and answer options
+    - [ ] quiz intro template
+    - [ ] quiz completed template
 - [ ] quiz list template
 - [ ] configuration
     - quizzes-list-data-url
     - quiz-data-url-prefix
-- [ ] quiz - basic version (single answer)
+- [ ] quiz - basic version (only single answer)
 - [ ] quiz list - basic version
 
 

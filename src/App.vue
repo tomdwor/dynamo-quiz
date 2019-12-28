@@ -1,11 +1,6 @@
 <template>
   <v-app>
-    <v-app-bar
-      v-if="!$route.fullPath.startsWith('/quiz')"
-      app
-      color="primary"
-      dark
-    >
+    <v-app-bar app color="primary" dark>
       <div class="d-flex align-center">
         <v-img
           alt="Vuetify Logo"
@@ -39,25 +34,43 @@
       <router-view />
     </v-content>
 
-    <v-bottom-navigation
+    <v-footer
       v-if="$route.fullPath.startsWith('/quiz')"
+      color="primary lighten-2"
+      padless
       fixed
-      v-model="bottomNav"
     >
-      <v-btn value="recent" href="/">
-        <span>Exit</span>
-        <v-icon>mdi-cancel</v-icon>
-      </v-btn>
-
-      <v-btn value="favorites">
-        <span>Restart</span>
-        <v-icon>mdi-replay</v-icon>
-      </v-btn>
-
-      <v-btn value="nearby">
-        <span>Submit</span>
-        <v-icon>mdi-play</v-icon>
-      </v-btn>
-    </v-bottom-navigation>
+      <v-row justify="center" class="grey lighten-2" no-gutters>
+        <v-col class="py-4 text-center" cols="6">
+          <span style="font-weight: bold;">13 / 14 of 25</span>
+          <v-progress-linear
+            v-model="quizProgress"
+            color="blue-grey"
+            height="25"
+            reactive
+            style="width: 33%; min-width: 160px; margin: 0 auto;"
+            value="25"
+          >
+            <template v-slot="{ value }">
+              <strong>{{ Math.ceil(value) }}%</strong>
+            </template>
+          </v-progress-linear>
+        </v-col>
+        <v-col class="py-4 text-center" cols="6">
+          <v-btn large color="primary" style="width: 33%; min-width: 160px;"
+            >SUBMIT</v-btn
+          >
+        </v-col>
+      </v-row>
+    </v-footer>
   </v-app>
 </template>
+
+<script>
+export default {
+  name: "App",
+  data: () => ({
+    quizProgress: 50
+  })
+};
+</script>
