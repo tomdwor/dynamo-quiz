@@ -9,7 +9,7 @@ Basic version of application.
 - [ ] configuration
     - quizzes-list-data-url
     - quiz-data-url-prefix
-- [ ] quiz - basic version (single)
+- [ ] quiz - basic version (single answer)
 - [ ] quiz list - basic version
 
 
