@@ -2,27 +2,36 @@
 
 ## Step 1: Basic app
 
-Basic version of application:
+Basic version of application.
 
 - [ ] quiz template
 - [ ] quiz list template
 - [ ] configuration
     - quizzes-list-data-url
     - quiz-data-url-prefix
-- [ ] quiz - basic version
+- [ ] quiz - basic version (single)
 - [ ] quiz list - basic version
 
 
 ## Step 2: Markdown/MathJax
 
-Allow using Markdown and MathJax content
+Allow using Markdown and MathJax content.
 
 - [ ] quiz description
 - [ ] questions
 - [ ] and answer options
 
 
-## Step 3: Quiz summary
+## Step 3: Answer types
+
+Another answer types:
+
+- [ ] multiple
+- [ ] text
+- [ ] text-LaTeX
+
+
+## Step 4: Quiz summary
 
 Once a quiz is completed, display quiz summary.
 
@@ -33,7 +42,7 @@ Once a quiz is completed, display quiz summary.
 - [ ] show explanation (if defined)
 
 
-## Step 4: App adjustment
+## Step 5: App adjustment
 
 Any additional details, fixes, adjustments.
 
