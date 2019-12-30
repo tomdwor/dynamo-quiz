@@ -62,7 +62,7 @@
         </v-col>
         <v-col class="py-4 text-center" cols="6">
           <v-btn large color="primary" style="width: 33%; min-width: 160px;"
-            >SUBMIT</v-btn
+            >CHECK</v-btn
           >
         </v-col>
       </v-row>
