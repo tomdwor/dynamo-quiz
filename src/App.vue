@@ -1,6 +1,11 @@
 <template>
   <v-app>
-    <v-app-bar app color="primary" dark>
+    <v-app-bar
+      v-if="!$route.fullPath.startsWith('/quiz')"
+      app
+      color="primary"
+      dark
+    >
       <div class="d-flex align-center">
         <v-img
           alt="Vuetify Logo"
@@ -25,7 +30,6 @@
 
       <v-toolbar-items>
         <v-btn text to="/">Home</v-btn>
-        <v-btn text to="/quiz">Quiz</v-btn>
         <v-btn text to="/about">About</v-btn>
       </v-toolbar-items>
     </v-app-bar>
@@ -70,7 +74,7 @@
 export default {
   name: "App",
   data: () => ({
-    quizProgress: 50
+    quizProgress: 40
   })
 };
 </script>

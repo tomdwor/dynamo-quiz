@@ -1,7 +1,9 @@
 <template>
   <div>
     <h1>{{ listName }}</h1>
-    This is home page.
+    <p>
+      <a href="/quiz">This is an example quiz</a>
+    </p>
   </div>
 </template>
 
