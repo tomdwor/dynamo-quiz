@@ -40,7 +40,7 @@
       </v-row>
       <v-row>
         <v-col>
-          <v-radio-group v-model="radios">
+          <v-radio-group>
             <v-radio value="1" class="align-start">
               <div slot="label">
                 <v-card outlined>
