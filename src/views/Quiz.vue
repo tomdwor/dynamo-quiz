@@ -41,7 +41,7 @@
       <v-row>
         <v-col>
           <v-radio-group v-model="radios">
-            <v-radio value="1" class="mb-4">
+            <v-radio value="1" class="align-start">
               <div slot="label">
                 <v-card outlined>
                   <v-list-item three-line>
@@ -62,7 +62,7 @@
                 </v-card>
               </div>
             </v-radio>
-            <v-radio value="2">
+            <v-radio value="2" class="align-start">
               <div slot="label">
                 <v-card outlined>
                   <v-list-item three-line>
@@ -77,7 +77,7 @@
                 </v-card>
               </div>
             </v-radio>
-            <v-radio value="3">
+            <v-radio value="3" class="align-start">
               <div slot="label">
                 <v-card outlined>
                   <v-list-item three-line>
@@ -101,7 +101,7 @@
                 </v-card>
               </div>
             </v-radio>
-            <v-radio value="4">
+            <v-radio value="4" class="align-start">
               <div slot="label">
                 <v-card outlined>
                   <v-list-item three-line>
