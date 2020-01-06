@@ -11,7 +11,7 @@ const routes = [
     component: Home
   },
   {
-    path: "/quiz",
+    path: "/quiz/:id",
     name: "quiz",
     component: () => import("../views/Quiz.vue")
   },
@@ -19,6 +19,10 @@ const routes = [
     path: "/about",
     name: "about",
     component: () => import("../views/About.vue")
+  },
+  {
+    path: "*",
+    component: () => import("../views/PageNotFound.vue")
   }
 ];
 
