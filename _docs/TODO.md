@@ -57,3 +57,10 @@ Any additional details, fixes, adjustments.
 - [ ] answer explanation
 - [ ] keyboard control
 
+
+## Other
+
+- [ ] Dynamo Quiz Editor (another Vue.js project)
+    - [ ] Create new quiz
+    - [ ] Import JSON and edit quiz
+    - [ ] Export quiz as a JSON file
