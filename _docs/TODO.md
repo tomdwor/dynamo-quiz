@@ -5,18 +5,9 @@
 Basic version of application.
 
 - [x] setup Vue/Vuetify app
-- [ ] common template
-    - [ ] separate Vue components
-        - [ ] main top navigation
-        - [ ] quiz top navigation (quiz name, exit button)
-        - [ ] main footer (not fixed)
-        - [ ] quiz footer (fixed)
-    - [ ] display proper top navigation and footer for given page
-- [ ] quiz template
-    - [ ] template with question and answer options
-    - [ ] quiz intro template
-    - [ ] quiz completed template
-- [ ] quiz list template
+- [x] common template and vue components
+- [x] quiz template
+- [x] quiz list template
 - [ ] configuration
     - quizzes-list-data-url
     - quiz-data-url-prefix
@@ -53,7 +44,13 @@ Once a quiz is completed, display quiz summary.
 - [ ] show explanation (if defined)
 
 
-## Step 5: App adjustment
+## Step 5: Quiz modes
+
+- [ ] practice mode
+- [ ] exam mode
+
+
+## Step 6: App adjustment
 
 Any additional details, fixes, adjustments.
 
