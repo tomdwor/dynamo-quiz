@@ -63,6 +63,8 @@ Once a quiz is completed, display quiz summary.
 
 Any additional details, fixes, adjustments.
 
+- [ ] quizzes list with folders
+- [ ] start random quiz (from current folder)
 - [ ] answer explanation
 - [ ] keyboard control
 
