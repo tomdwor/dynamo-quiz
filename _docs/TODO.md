@@ -3,9 +3,6 @@
 ## Current
 
 - [ ] application logo
-- [ ] quiz template
-    - [ ] vertical align middle for content if high x-resolution
-    - [ ] adjust buttons positions and widths
 - [ ] prepare Vuex store
 
 
