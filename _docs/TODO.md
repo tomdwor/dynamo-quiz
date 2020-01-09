@@ -48,6 +48,7 @@ Once a quiz is completed, display quiz summary.
 - [ ] show user answer
 - [ ] filter: all / correct / incorrect
 - [ ] show explanation (if defined)
+- [ ] "Scroll to top" button
 
 
 ## Step 5: Quiz modes
@@ -63,7 +64,7 @@ Any additional details, fixes, adjustments.
 - [ ] quizzes list with folders
 - [ ] start random quiz (from current folder)
 - [ ] answer explanation
-- [ ] keyboard control
+- [ ] keyboard controls
 
 
 ## Other
