@@ -2,8 +2,8 @@
 
 ## Current
 
+- [ ] answer option box - width 100%
 - [ ] application logo
-- [ ] prepare Vuex store
 
 
 ## Step 1: Basic app
@@ -18,6 +18,9 @@ Basic version of application.
     - quizzes-list-data-url
     - quiz-data-url-prefix
 - [ ] quiz - basic version (only single answer)
+    - [ ] prepare Vuex store
+    - [ ] axios: get quiz data from JSON file, use loader
+    - [ ] working quiz
 - [ ] quiz list - basic version
 
 
@@ -61,6 +64,7 @@ Once a quiz is completed, display quiz summary.
 
 Any additional details, fixes, adjustments.
 
+- [ ] multi languages (one file with labels per language)
 - [ ] quizzes list with folders
 - [ ] start random quiz (from current folder)
 - [ ] answer explanation
