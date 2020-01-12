@@ -2,7 +2,6 @@
 
 ## Current
 
-- [ ] answer option box - width 100%
 - [ ] application logo
 
 
