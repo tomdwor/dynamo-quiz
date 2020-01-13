@@ -2,7 +2,11 @@
 
 ## Vue
 
-
+- [Vue app - config / env variables](https://dev.to/ratracegrad/how-to-use-environment-variables-in-vue-js-4ko7)
+- Get data from JSON
+    - [From local JSON](https://stackoverflow.com/questions/45565349/how-to-acces-external-json-file-objects-in-vue-js-app)
+    - [Using Axios](https://medium.com/@negarjf/how-to-access-a-static-json-file-in-vue-cli-3-8943dc343f95)
+    - [Vuetify loader](https://vuetifyjs.com/en/components/progress-circular#examples)
 
 
 ## Vuetify
