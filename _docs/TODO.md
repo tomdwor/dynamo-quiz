@@ -60,6 +60,7 @@ Once a quiz is completed, display quiz summary.
 Any additional details, fixes, adjustments.
 
 - [ ] multi languages (one file with labels per language)
+- [ ] limit of questions (e.g. show 20 random questions of all 65)
 - [ ] quizzes list with folders
 - [ ] start random quiz (from current folder)
 - [ ] answer explanation
