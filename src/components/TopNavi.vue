@@ -5,18 +5,18 @@
         alt="Vuetify Logo"
         class="shrink mr-2"
         contain
-        src="https://cdn.vuetifyjs.com/images/logos/vuetify-logo-dark.png"
+        src="/dynamoquiz_logo.png"
         transition="scale-transition"
         width="40"
       />
 
       <v-img
         alt="Vuetify Name"
-        class="shrink mt-1 hidden-sm-and-down"
+        class="shrink mt-0 hidden-sm-and-down"
         contain
-        min-width="100"
-        src="https://cdn.vuetifyjs.com/images/logos/vuetify-name-dark.png"
-        width="100"
+        min-width="160"
+        src="/dynamoquiz_name.png"
+        width="160"
       />
     </div>
 

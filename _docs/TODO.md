@@ -1,9 +1,5 @@
 # TODO
 
-## Current
-
-- [ ] application logo
-
 
 ## Step 1: Basic app
 
