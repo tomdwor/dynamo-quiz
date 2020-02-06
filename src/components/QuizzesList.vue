@@ -74,9 +74,9 @@ export default {
           id: "special-relativity"
         },
         {
-          name: "General relativity",
-          category: "Physics",
-          id: "general-relativity"
+          name: "Periodic table",
+          category: "Chemistry",
+          id: "periodic-table"
         }
       ]
     };
