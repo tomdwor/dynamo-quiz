@@ -2,20 +2,94 @@
   <v-container>
     <v-layout text-center wrap>
       <v-flex mb-4>
-        <QuizzesList listName="My Quizzes List" />
+        <v-card id="quizzesList" class="mt-6">
+          <v-card-title>
+            Quizzes list
+            <v-spacer></v-spacer>
+            <v-text-field
+              v-model="search"
+              append-icon="search"
+              label="Search"
+              single-line
+              hide-details
+            ></v-text-field>
+          </v-card-title>
+          <v-data-table
+            :headers="headers"
+            :items="items"
+            :search="search"
+            sort-field="name"
+            disable-pagination
+            hide-default-header
+            hide-default-footer
+          >
+            <template slot="header">
+              <tr class="grey lighten-4">
+                <th>Quiz name</th>
+                <th>Category</th>
+                <th>&nbsp;</th>
+              </tr>
+            </template>
+            <template slot="item" slot-scope="props">
+              <tr>
+                <td class="text-left">
+                  <a :href="'/quiz/' + props.item.id">{{ props.item.name }}</a>
+                </td>
+                <td class="text-left">{{ props.item.category }}</td>
+                <td class="text-right">
+                  <v-btn
+                    icon
+                    class="primary--text ma-0"
+                    :href="'/quiz/' + props.item.id"
+                  >
+                    <v-icon>remove_red_eye</v-icon>
+                  </v-btn>
+                </td>
+              </tr>
+            </template>
+          </v-data-table>
+        </v-card>
       </v-flex>
     </v-layout>
   </v-container>
 </template>
 
 <script>
-// @ is an alias to /src
-import QuizzesList from "@/components/QuizzesList.vue";
-
 export default {
   name: "home",
-  components: {
-    QuizzesList
+  data() {
+    return {
+      search: "",
+      headers: [
+        { text: "Quiz name", value: "name", align: "left" },
+        { text: "Category", value: "category" },
+        { text: "", sortable: false }
+      ],
+      items: [
+        {
+          name: "Quantum physics",
+          category: "Physics",
+          id: "quantum-physics"
+        },
+        {
+          name: "Special relativity",
+          category: "Physics",
+          id: "special-relativity"
+        },
+        {
+          name: "Periodic table",
+          category: "Chemistry",
+          id: "periodic-table"
+        }
+      ]
+    };
   }
 };
 </script>
+
+<style>
+#quizzesList table td,
+#quizzesList table th {
+  font-size: 16px !important;
+}
+</style>
