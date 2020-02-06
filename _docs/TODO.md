@@ -9,9 +9,9 @@ Basic version of application.
 - [x] common template and vue components
 - [x] quiz template
 - [x] quiz list template
-- [ ] configuration
-    - quizzes-list-data-url
-    - quiz-data-url-prefix
+- [x] configuration
+    - [x] quizzes-list-data-url
+    - [x] quiz-data-url-prefix
 - [ ] quiz - basic version (only single answer)
     - [ ] prepare Vuex store
     - [ ] axios: get quiz data from JSON file, use loader
