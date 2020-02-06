@@ -19,6 +19,7 @@ Basic version of application.
         - [ ] prepare real content in JSON files
         - [ ] load quizzes list from JSON
         - [ ] load quiz data from JSON
+            - [ ] valid data source string (a-z0-9\-_)
     - [ ] working quiz
 - [ ] quiz list - basic version
 
