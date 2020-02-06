@@ -5,7 +5,7 @@
         alt="Vuetify Logo"
         class="shrink mr-2"
         contain
-        src="/dynamoquiz_logo.png"
+        src="@/assets/dynamoquiz_logo.png"
         transition="scale-transition"
         width="40"
       />
@@ -15,7 +15,7 @@
         class="shrink mt-0 hidden-sm-and-down"
         contain
         min-width="160"
-        src="/dynamoquiz_name.png"
+        src="@/assets/dynamoquiz_name.png"
         width="160"
       />
     </div>
