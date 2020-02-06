@@ -1,14 +1,6 @@
 <template>
   <div>
-    <transition name="fade">
-      <div id="loader" v-if="loading">
-        <v-progress-circular
-          :size="100"
-          color="primary"
-          indeterminate
-        ></v-progress-circular>
-      </div>
-    </transition>
+    <Loader :isLoading="isLoading" />
 
     <v-container id="quizContainer" bg fill-height>
       <v-layout
@@ -19,7 +11,7 @@
         style="padding-bottom: 80px;"
       >
         <transition name="fade">
-          <div v-if="!loading">
+          <div v-if="!isLoading">
             <v-row>
               <v-col class="py-4 text-left" cols="8">
                 <h2>Question 15 of 25</h2>
@@ -152,14 +144,18 @@
 <script>
 import axios from "axios";
 import { QUIZ_DATA_URL_PREFIX } from "@/quiz.settings.js";
+import Loader from "@/components/Loader.vue";
 
 export default {
   name: "quiz",
+  components: {
+    Loader
+  },
   data() {
     return {
       dialog: false,
       quizId: this.$route.params.id,
-      loading: true
+      isLoading: true
     };
   },
   methods: {
@@ -175,7 +171,7 @@ export default {
     let file_name = `${that.quizId}.json`;
     // TODO: save data to store
     axios.get(`${QUIZ_DATA_URL_PREFIX}${file_name}`).then(function(response) {
-      that.loading = false;
+      that.isLoading = false;
       console.log(response);
     });
     // TODO: handle not-found / error cases
@@ -216,15 +212,5 @@ hr {
   border-top: 1px solid rgba(0, 0, 0, 0.12);
   margin: 1em 0;
   padding: 0;
-}
-
-.fade-enter-active,
-.fade-leave-active {
-  transition: opacity 0.5s ease-in-out;
-}
-
-.fade-enter,
-.fade-leave-active {
-  opacity: 0;
 }
 </style>
