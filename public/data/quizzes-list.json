@@ -1,6 +1,17 @@
 [
   {
-    "name": "Example quiz",
-    "data_source": "example-quiz.json"
+    "id": "quantum-physics",
+    "name": "Quantum physics",
+    "category": "Physics"
+  },
+  {
+    "id": "special-relativity",
+    "name": "Special relativity",
+    "category": "Physics"
+  },
+  {
+    "id": "periodic-table",
+    "name": "Periodic table",
+    "category": "Chemistry"
   }
 ]

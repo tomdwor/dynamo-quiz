@@ -16,7 +16,7 @@ Basic version of application.
     - [x] prepare Vuex store
     - [ ] get data from JSON files using Axios
         - [x] basic usage of Axios and Vuetify loader
-        - [ ] prepare real content in JSON files
+        - [x] prepare real content in JSON files
         - [ ] load quizzes list from JSON
         - [ ] load quiz data from JSON
             - [ ] valid data source string (a-z0-9\-)
