@@ -18,7 +18,7 @@ Basic version of application.
         - [x] basic usage of Axios and Vuetify loader
         - [x] prepare real content in JSON files
         - [x] load quizzes list from JSON
-        - [ ] valid quiz ID string before getting quiz data (a-z0-9\-)
+        - [x] valid quiz ID string before getting quiz data
         - [ ] load quiz data from JSON
     - [ ] working quiz
 - [ ] quiz list - basic version

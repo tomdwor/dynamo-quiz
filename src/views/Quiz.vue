@@ -156,20 +156,27 @@ export default {
   methods: {
     exitQuiz: function() {
       window.location.href = "/";
+    },
+    validQuizID: function(quizID) {
+      let patt = new RegExp("^[a-z][a-z0-9]*(\\-[a-z0-9]+)*$");
+      return patt.test(quizID);
     }
   },
   mounted() {
-    // TODO: first get data from store, if store empty than init quiz by getting data from JSON
+    // TODO: first get data from store, if store empty than init quiz by data from JSON
     let that = this;
-
-    // TODO: valid quizId here (a-z0-9\-)
-    let file_name = `${that.quizId}.json`;
-    // TODO: save data to store
-    axios.get(`${QUIZ_DATA_URL_PREFIX}${file_name}`).then(function(response) {
-      that.isLoading = false;
-      console.log(response);
-    });
-    // TODO: handle not-found / error cases
+    if(this.validQuizID(that.quizId)) {
+      let file_name = `${that.quizId}.json`;
+      // TODO: save data to store
+      axios.get(`${QUIZ_DATA_URL_PREFIX}${file_name}`).then(function(response) {
+        that.isLoading = false;
+        console.log(response);
+      });
+      // TODO: handle not-found / error cases
+    } else {
+      alert("Invalid quiz ID");
+      window.location.href = "/";
+    }
   }
 };
 </script>
