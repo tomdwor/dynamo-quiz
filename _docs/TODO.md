@@ -13,7 +13,7 @@ Basic version of application.
     - [x] quizzes-list-data-url
     - [x] quiz-data-url-prefix
 - [ ] quiz - basic version (only single answer)
-    - [ ] prepare Vuex store
+    - [x] prepare Vuex store
     - [ ] axios: get quiz data from JSON file, use loader
     - [ ] working quiz
 - [ ] quiz list - basic version
