@@ -2,7 +2,6 @@
     "title": "Periodic table",
     "description": "Periodic table quiz description here...",
     "pass_rate": 70,
-    "questions_numb": 3,
     "mode": "practice",
     "questions": [
         {

@@ -4,24 +4,24 @@ import Vuex from "vuex";
 Vue.use(Vuex);
 
 const state = {
-  quizState: {}, // 'start', 'ask', 'check', 'review'
+  quizState: {},
   quizData: {},
-  questionsRandomList: {},
+  questionsRandomIds: {},
   answers: {}
 };
 
 const mutations = {
-  changeQuizState(state, payload) {
-    state.quizState = payload.value;
+  changeQuizState(state, value) {
+    state.quizState = value;
   },
-  changeQuizData(state, payload) {
-    state.quizData = payload.value;
+  changeQuizData(state, value) {
+    state.quizData = value;
   },
-  changeQuestionsRandomList(state, payload) {
-    state.questionsRandomList = payload.value;
+  changeQuestionsRandomIds(state, value) {
+    state.questionsRandomIds = value;
   },
-  changeAnswers(state, payload) {
-    state.answers = payload.value;
+  changeAnswers(state, value) {
+    state.answers = value;
   }
 };
 

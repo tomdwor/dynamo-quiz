@@ -137,20 +137,25 @@
 </template>
 
 <script>
+import store from "@/store/index";
 import axios from "axios";
 import { QUIZ_DATA_URL_PREFIX } from "@/config.js";
 import Loader from "@/components/Loader.vue";
+import Quiz from "@/domain/quiz/Quiz.js";
 
 export default {
   name: "quiz",
   components: {
     Loader
   },
+  store,
   data() {
+    let quiz = new Quiz(store);
     return {
       dialog: false,
       quizId: this.$route.params.id,
-      isLoading: true
+      isLoading: true,
+      quiz
     };
   },
   methods: {
@@ -163,14 +168,12 @@ export default {
     }
   },
   mounted() {
-    // TODO: first get data from store, if store empty than init quiz by data from JSON
     let that = this;
     if (this.validQuizID(that.quizId)) {
       let file_name = `${that.quizId}.json`;
-      // TODO: save data to store
       axios.get(`${QUIZ_DATA_URL_PREFIX}${file_name}`).then(function(response) {
         that.isLoading = false;
-        console.log(response);
+        that.quiz.initQuiz(response.data);
       });
       // TODO: handle not-found / error cases
     } else {

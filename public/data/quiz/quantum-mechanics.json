@@ -2,7 +2,6 @@
     "title": "Quantum physics",
     "description": "Quantum physics quiz description here...",
     "pass_rate": 70,
-    "questions_numb": 3,
     "mode": "practice",
     "questions": [
         {

@@ -86,7 +86,6 @@ export default {
     axios.get(QUIZZES_LIST_DATA_URL).then(function(response) {
       that.isLoading = false;
       that.items = response.data;
-      console.log(response);
     });
     // TODO: handle not-found / error cases
   }
