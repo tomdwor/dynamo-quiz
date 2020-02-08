@@ -12,6 +12,7 @@ Basic version of application.
 - [x] configuration
     - [x] quizzes-list-data-url
     - [x] quiz-data-url-prefix
+- [x] quiz list - basic version
 - [ ] quiz - basic version (only single answer)
     - [x] prepare Vuex store
     - [x] get data from JSON files using Axios
@@ -21,7 +22,16 @@ Basic version of application.
         - [x] valid quiz ID string before getting quiz data
         - [x] load quiz data from JSON
     - [ ] working quiz
-- [ ] quiz list - basic version
+        - [x] init store values at quiz start
+        - [ ] quiz content components
+            - [ ] start quiz
+            - [ ] ask / check
+            - [ ] review
+        - [ ] display "start quiz" component content at quiz start
+        - [ ] display ask / check component content after start
+        - [ ] got through the questions
+        - [ ] display review after last answered question
+        - [ ] quiz header (quiz title, category, current question info, etc.)
 
 
 ## Step 2: Markdown/MathJax
