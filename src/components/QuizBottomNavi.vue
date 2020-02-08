@@ -8,7 +8,7 @@
           justify="center"
           no-gutters
         >
-          <v-col class="pt-3 text-left" cols="6">
+          <v-col class="py-4 text-left" cols="6">
             <v-btn class="navi-btn" :href="'/'" large>Cancel</v-btn>
           </v-col>
           <v-col class="py-4 text-right" cols="6">
