@@ -165,7 +165,7 @@ export default {
   mounted() {
     // TODO: first get data from store, if store empty than init quiz by data from JSON
     let that = this;
-    if(this.validQuizID(that.quizId)) {
+    if (this.validQuizID(that.quizId)) {
       let file_name = `${that.quizId}.json`;
       // TODO: save data to store
       axios.get(`${QUIZ_DATA_URL_PREFIX}${file_name}`).then(function(response) {
