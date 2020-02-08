@@ -8,38 +8,42 @@
       style="padding-bottom: 80px;"
     >
       <transition name="fade">
-        <div v-if="!isLoading">
-          <v-row>
-            <v-col class="py-4 text-left" cols="8">
-              <h2>Question 15 of 25</h2>
-            </v-col>
-            <v-col class="py-4 text-right" cols="4">
-              <v-dialog v-model="dialog" persistent max-width="290">
-                <template v-slot:activator="{ on }">
-                  <v-btn v-on="on">Exit quiz</v-btn>
-                </template>
-                <v-card>
-                  <v-card-title class="headline">Exit quiz</v-card-title>
-                  <v-card-text>Are you sure you want to exit quiz?</v-card-text>
-                  <v-card-actions>
-                    <v-spacer></v-spacer>
-                    <v-btn color="grey darken-1" text @click="dialog = false"
-                      >Cancel</v-btn
+        <div v-if="!isLoading" style="width: 100%;">
+          <div v-if="quizState == 'ask' || quizState == 'check'">
+            <v-row>
+              <v-col class="py-4 text-left" cols="8">
+                <h2>Question 15 of 25</h2>
+              </v-col>
+              <v-col class="py-4 text-right" cols="4">
+                <v-dialog v-model="dialog" persistent max-width="290">
+                  <template v-slot:activator="{ on }">
+                    <v-btn v-on="on">Exit quiz</v-btn>
+                  </template>
+                  <v-card>
+                    <v-card-title class="headline">Exit quiz</v-card-title>
+                    <v-card-text
+                      >Are you sure you want to exit quiz?</v-card-text
                     >
-                    <v-btn color="red darken-1" text @click="exitQuiz"
-                      >EXIT</v-btn
-                    >
-                  </v-card-actions>
-                </v-card>
-              </v-dialog>
-            </v-col>
-          </v-row>
+                    <v-card-actions>
+                      <v-spacer></v-spacer>
+                      <v-btn color="grey darken-1" text @click="dialog = false"
+                        >Cancel</v-btn
+                      >
+                      <v-btn color="red darken-1" text @click="exitQuiz"
+                        >EXIT</v-btn
+                      >
+                    </v-card-actions>
+                  </v-card>
+                </v-dialog>
+              </v-col>
+            </v-row>
 
-          <hr class="mt-2 mb-6" />
+            <hr class="mt-2 mb-6" />
 
-          (Quiz ID: {{ quizId }})<br /><br />
+            (Quiz ID: {{ quizId }})<br /><br />
+          </div>
 
-          <QuizStart v-if="quizState == 'start'" />
+          <QuizStart v-if="quizState == 'start'" :quizHandler="quizHandler" />
           <QuizQuestion v-if="quizState == 'ask' || quizState == 'check'" />
           <QuizReview v-if="quizState == 'review'" />
         </div>
@@ -52,7 +56,7 @@
 <script>
 import store from "@/store/index";
 import axios from "axios";
-import Quiz from "@/domain/quiz/Quiz.js";
+import QuizHandler from "@/domain/quiz/QuizHandler.js";
 import { QUIZ_DATA_URL_PREFIX } from "@/config.js";
 import Loader from "@/components/Loader.vue";
 import QuizStart from "@/components/quiz_content/QuizStart.vue";
@@ -69,17 +73,17 @@ export default {
   },
   store,
   data() {
-    let quiz = new Quiz(store);
+    let quizHandler = new QuizHandler(store);
     return {
       dialog: false,
       quizId: this.$route.params.id,
       isLoading: true,
-      quiz
+      quizHandler
     };
   },
   computed: {
     quizState: function() {
-      return this.quiz.getQuizState();
+      return this.quizHandler.getQuizState();
     }
   },
   methods: {
@@ -97,7 +101,7 @@ export default {
       let file_name = `${that.quizId}.json`;
       axios.get(`${QUIZ_DATA_URL_PREFIX}${file_name}`).then(function(response) {
         that.isLoading = false;
-        that.quiz.initQuiz(response.data);
+        that.quizHandler.initQuiz(response.data);
       });
       // TODO: handle not-found / error cases
     } else {

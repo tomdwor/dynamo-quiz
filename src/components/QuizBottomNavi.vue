@@ -2,7 +2,27 @@
   <v-footer padless fixed class="grey lighten-3">
     <v-container style="max-width: 1200px;">
       <v-layout>
-        <v-row class="mx-3" justify="center" no-gutters>
+        <v-row
+          v-if="quizState == 'start'"
+          class="mx-3"
+          justify="center"
+          no-gutters
+        >
+          <v-col class="pt-3 text-left" cols="6">
+            <v-btn class="navi-btn" :href="'/'" large>Cancel</v-btn>
+          </v-col>
+          <v-col class="py-4 text-right" cols="6">
+            <v-btn class="navi-btn" large color="primary" v-on:click="startQuiz"
+              >Start quiz</v-btn
+            >
+          </v-col>
+        </v-row>
+        <v-row
+          v-if="quizState == 'ask' || quizState == 'check'"
+          class="mx-3"
+          justify="center"
+          no-gutters
+        >
           <v-col class="pt-3 text-center" cols="6">
             <div style="width: calc(100% - 12px);">
               <span style="font-weight: bold;">13 / 14 of 25</span>
@@ -21,7 +41,7 @@
             </div>
           </v-col>
           <v-col class="py-4 text-right" cols="6">
-            <v-btn id="submitBtn" large color="primary">CHECK</v-btn>
+            <v-btn class="navi-btn" large color="primary">CHECK</v-btn>
           </v-col>
         </v-row>
       </v-layout>
@@ -30,27 +50,45 @@
 </template>
 
 <script>
+import store from "@/store/index";
+import QuizHandler from "@/domain/quiz/QuizHandler.js";
+
 export default {
   name: "QuizBottomNavi",
-  data: () => ({
-    quizProgress: 40
-  })
+  store,
+  data() {
+    let quizHandler = new QuizHandler(store);
+    return {
+      quizProgress: 40,
+      quizHandler
+    };
+  },
+  computed: {
+    quizState: function() {
+      return this.quizHandler.getQuizState();
+    }
+  },
+  methods: {
+    startQuiz: function() {
+      this.quizHandler.startQuiz();
+    }
+  }
 };
 </script>
 
 <style>
-#submitBtn {
+.navi-btn {
   width: 50%;
 }
 
 @media (max-width: 959px) {
-  #submitBtn {
+  .navi-btn {
     width: calc(75% - 12px);
   }
 }
 
 @media (max-width: 599px) {
-  #submitBtn {
+  .navi-btn {
     width: calc(100% - 12px);
   }
 }

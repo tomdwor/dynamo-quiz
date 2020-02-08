@@ -91,7 +91,15 @@
 
 <script>
 export default {
-  name: "QuizQuestion"
+  name: "QuizQuestion",
+  props: {
+    quizHandler: Object
+  },
+  computed: {
+    quizTitle: function() {
+      return this.quizHandler.getQuizTitle();
+    }
+  }
 };
 </script>
 
