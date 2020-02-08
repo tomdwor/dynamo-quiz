@@ -9,7 +9,7 @@
     >
       <transition name="fade">
         <div v-if="!isLoading" style="width: 100%;">
-          <div v-if="quizState == 'ask' || quizState == 'check'">
+          <div v-if="quizState === 'ask' || quizState === 'check'">
             <v-row>
               <v-col class="py-4 text-left" cols="8">
                 <h2>Question 15 of 25</h2>
@@ -43,9 +43,9 @@
             (Quiz ID: {{ quizId }})<br /><br />
           </div>
 
-          <QuizStart v-if="quizState == 'start'" :quizHandler="quizHandler" />
-          <QuizQuestion v-if="quizState == 'ask' || quizState == 'check'" />
-          <QuizReview v-if="quizState == 'review'" />
+          <QuizStart v-if="quizState === 'start'" :quizHandler="quizHandler" />
+          <QuizQuestion v-if="quizState === 'ask' || quizState === 'check'" />
+          <QuizReview v-if="quizState === 'review'" />
         </div>
       </transition>
       <Loader :isLoading="isLoading" />

@@ -3,13 +3,13 @@
     <v-container style="max-width: 1200px;">
       <v-layout>
         <v-row
-          v-if="quizState == 'start'"
+          v-if="quizState === 'start'"
           class="mx-3"
           justify="center"
           no-gutters
         >
           <v-col class="py-4 text-left" cols="6">
-            <v-btn class="navi-btn" :href="'/'" large>Cancel</v-btn>
+            <v-btn class="navi-btn" large :href="'/'">Cancel</v-btn>
           </v-col>
           <v-col class="py-4 text-right" cols="6">
             <v-btn class="navi-btn" large color="primary" v-on:click="startQuiz"
@@ -18,7 +18,7 @@
           </v-col>
         </v-row>
         <v-row
-          v-if="quizState == 'ask' || quizState == 'check'"
+          v-if="quizState === 'ask' || quizState === 'check'"
           class="mx-3"
           justify="center"
           no-gutters
@@ -42,6 +42,23 @@
           </v-col>
           <v-col class="py-4 text-right" cols="6">
             <v-btn class="navi-btn" large color="primary">CHECK</v-btn>
+          </v-col>
+        </v-row>
+        <v-row
+          v-if="quizState === 'review'"
+          class="mx-3"
+          justify="center"
+          no-gutters
+        >
+          <v-col class="py-4 text-left" cols="6">
+            <v-btn class="navi-btn" large v-on:click="startQuiz"
+              >Repeat quiz</v-btn
+            >
+          </v-col>
+          <v-col class="py-4 text-right" cols="6">
+            <v-btn class="navi-btn" large color="primary" :href="'/'"
+              >Finish quiz</v-btn
+            >
           </v-col>
         </v-row>
       </v-layout>
