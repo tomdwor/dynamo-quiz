@@ -138,7 +138,7 @@
 
 <script>
 import axios from "axios";
-import { QUIZ_DATA_URL_PREFIX } from "@/quiz.settings.js";
+import { QUIZ_DATA_URL_PREFIX } from "@/config.js";
 import Loader from "@/components/Loader.vue";
 
 export default {

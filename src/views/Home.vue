@@ -61,7 +61,7 @@
 
 <script>
 import axios from "axios";
-import { QUIZZES_LIST_DATA_URL } from "@/quiz.settings.js";
+import { QUIZZES_LIST_DATA_URL } from "@/config.js";
 import Loader from "@/components/Loader.vue";
 
 export default {
