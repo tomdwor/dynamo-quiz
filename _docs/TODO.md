@@ -24,11 +24,11 @@ Basic version of application.
     - [ ] working quiz
         - [x] init store values at quiz start
         - [ ] quiz content components
-            - [ ] start quiz
-            - [ ] ask / check
+            - [ ] start
+            - [ ] question
             - [ ] review
-        - [ ] display "start quiz" component content at quiz start
-        - [ ] display ask / check component content after start
+        - [ ] display start component content at quiz start
+        - [ ] display question component content after start
         - [ ] got through the questions
         - [ ] display review after last answered question
         - [ ] quiz header (quiz title, category, current question info, etc.)
