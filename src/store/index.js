@@ -4,10 +4,11 @@ import Vuex from "vuex";
 Vue.use(Vuex);
 
 const state = {
-  quizState: {},
-  quizData: {},
-  questionsRandomIds: {},
-  answers: {}
+  quizState: null,
+  quizData: null,
+  questionsRandomIds: null,
+  answers: null,
+  checkedAnswer: null
 };
 
 const mutations = {
@@ -22,6 +23,9 @@ const mutations = {
   },
   changeAnswers(state, value) {
     state.answers = value;
+  },
+  changeCheckedAnswer(state, value) {
+    state.checkedAnswer = value;
   }
 };
 

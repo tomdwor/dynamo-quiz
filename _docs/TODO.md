@@ -18,8 +18,9 @@ Basic version of application.
         - [x] init store values at quiz start
         - [x] quiz content components
         - [x] display start content component at quiz start
-        - [ ] display question content component after start
-        - [ ] got through the questions
+        - [x] display question content component after start
+        - [x] go through the questions
+        - [ ] mark correct / incorrect answers
         - [ ] display review after last answered question
         - [ ] quiz header (quiz title, category, current question info, etc.)
 

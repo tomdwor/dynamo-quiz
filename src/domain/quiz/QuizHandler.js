@@ -36,15 +36,11 @@ export default class QuizHandler {
     return this.store.state.quizData["description"];
   }
 
-  getAnsweredQuestionsNumber() {
-    return this.store.state.answers.length;
-  }
-
-  getAllQuestionsNumber(quizData) {
+  _getAllQuestionsNumber(quizData) {
     return quizData["questions"].length;
   }
 
-  getDisplayedQuestionsNumber(quizData) {
+  _getDisplayedQuestionsNumber(quizData) {
     let displayedQuestionsNumber = quizData["questions"].length;
     if (
       "questions_numb" in quizData &&
@@ -56,8 +52,8 @@ export default class QuizHandler {
   }
 
   randomizeQuestionsIds(quizData) {
-    let allQuestionsNumb = this.getAllQuestionsNumber(quizData);
-    let displayedQuestionsNumber = this.getDisplayedQuestionsNumber(quizData);
+    let allQuestionsNumb = this._getAllQuestionsNumber(quizData);
+    let displayedQuestionsNumber = this._getDisplayedQuestionsNumber(quizData);
     let ids_pool = Array.from(Array(allQuestionsNumb).keys());
     let random_ids = [];
     for (let i = 0; i < displayedQuestionsNumber; i++) {
@@ -68,14 +64,86 @@ export default class QuizHandler {
     return random_ids;
   }
 
+  _getCurrentQuestionId() {
+    let index = this.store.state.answers.length;
+    if (this.store.state.quizState == quizStates.CHECK) {
+      index--;
+    }
+    return this.store.state.questionsRandomIds[index];
+  }
+
+  _getCurrentQuestionData() {
+    let currentQuestionId = this._getCurrentQuestionId();
+    return this.store.state.quizData.questions[currentQuestionId];
+  }
+
   startQuiz() {
     this.store.commit("changeQuizState", quizStates.ASK);
   }
 
+  checkAnswer() {
+    let currentQuestionData = this._getCurrentQuestionData();
+    let answers = this.store.state.answers;
+    let currentQuestionId = this._getCurrentQuestionId();
+
+    if (this.store.state.checkedAnswer === currentQuestionData["correct"][0]) {
+      answers.push({ id: currentQuestionId, isCorrect: true });
+    } else {
+      answers.push({ id: currentQuestionId, isCorrect: true });
+    }
+
+    this.store.commit("changeAnswers", answers);
+    this.store.commit("changeQuizState", quizStates.CHECK);
+  }
+
+  nextQuestion() {
+    let quizData = this.store.state.quizData;
+    let displayedQuestionsNumber = this._getDisplayedQuestionsNumber(quizData);
+    this.store.commit("changeCheckedAnswer", null);
+
+    let that = this;
+    setTimeout(function() {
+      if (that.store.state.answers.length === displayedQuestionsNumber) {
+        that.store.commit("changeQuizState", quizStates.REVIEW);
+      } else {
+        that.store.commit("changeQuizState", quizStates.ASK);
+      }
+    }, 500);
+  }
+
+  getQuestion() {
+    let currentQuestionData = this._getCurrentQuestionData();
+    return currentQuestionData["question"];
+  }
+
+  getAnswers() {
+    let currentQuestionData = this._getCurrentQuestionData();
+    return currentQuestionData["answers"];
+  }
+
+  getQuestionsNumber() {
+    let quizData = this.store.state.quizData;
+    return this._getDisplayedQuestionsNumber(quizData);
+  }
+
+  getAnswersNumber() {
+    return this.store.state.answers.length;
+  }
+
+  getCorrectAnswersNumber() {
+    let correctNumber = 0;
+    for (let i = 0; i < this.store.state.answers.length; i++) {
+      if (this.store.state.answers[i]["isCorrect"]) {
+        correctNumber++;
+      }
+    }
+    return correctNumber;
+  }
+
   getQuestionsNumberInfo() {
     let quizData = this.store.state.quizData;
-    let allQuestionsNumb = this.getAllQuestionsNumber(quizData);
-    let displayedQuestionsNumber = this.getDisplayedQuestionsNumber(quizData);
+    let allQuestionsNumb = this._getAllQuestionsNumber(quizData);
+    let displayedQuestionsNumber = this._getDisplayedQuestionsNumber(quizData);
 
     let infoText = "";
     if (allQuestionsNumb === displayedQuestionsNumber) {
@@ -84,5 +152,10 @@ export default class QuizHandler {
       infoText = `${displayedQuestionsNumber} of ${allQuestionsNumb}`;
     }
     return infoText;
+  }
+
+  repeatQuiz() {
+    let quizData = this.store.state.quizData;
+    this.initQuiz(quizData);
   }
 }

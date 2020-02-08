@@ -25,7 +25,10 @@
         >
           <v-col class="pt-3 text-center" cols="6">
             <div style="width: calc(100% - 12px);">
-              <span style="font-weight: bold;">13 / 14 of 25</span>
+              <span style="font-weight: bold;"
+                >{{ correctAnswersNumber }} / {{ answersNumber }} of
+                {{ questionsNumber }}</span
+              >
               <v-progress-linear
                 v-model="quizProgress"
                 color="blue-grey"
@@ -41,7 +44,23 @@
             </div>
           </v-col>
           <v-col class="py-4 text-right" cols="6">
-            <v-btn class="navi-btn" large color="primary">CHECK</v-btn>
+            <v-btn
+              v-if="quizState === 'ask'"
+              class="navi-btn"
+              large
+              color="primary"
+              v-on:click="checkAnswer"
+              :disabled="isDisabledCheckBtn"
+              >CHECK</v-btn
+            >
+            <v-btn
+              v-if="quizState === 'check'"
+              class="navi-btn"
+              large
+              color="primary"
+              v-on:click="nextQuestion"
+              >NEXT</v-btn
+            >
           </v-col>
         </v-row>
         <v-row
@@ -51,7 +70,7 @@
           no-gutters
         >
           <v-col class="py-4 text-left" cols="6">
-            <v-btn class="navi-btn" large v-on:click="startQuiz"
+            <v-btn class="navi-btn" large v-on:click="repeatQuiz"
               >Repeat quiz</v-btn
             >
           </v-col>
@@ -76,18 +95,44 @@ export default {
   data() {
     let quizHandler = new QuizHandler(store);
     return {
-      quizProgress: 40,
       quizHandler
     };
   },
   computed: {
     quizState: function() {
       return this.quizHandler.getQuizState();
+    },
+    answersNumber: function() {
+      return this.quizHandler.getAnswersNumber();
+    },
+    correctAnswersNumber: function() {
+      return this.quizHandler.getCorrectAnswersNumber();
+    },
+    questionsNumber: function() {
+      return this.quizHandler.getQuestionsNumber();
+    },
+    quizProgress: function() {
+      let answersNumb = this.quizHandler.getAnswersNumber();
+      let questionsNumb = this.quizHandler.getQuestionsNumber();
+      let progress = Math.round((100 * answersNumb) / questionsNumb);
+      return progress;
+    },
+    isDisabledCheckBtn: function() {
+      return this.$store.state.checkedAnswer === null;
     }
   },
   methods: {
     startQuiz: function() {
       this.quizHandler.startQuiz();
+    },
+    checkAnswer: function() {
+      this.quizHandler.checkAnswer();
+    },
+    nextQuestion: function() {
+      this.quizHandler.nextQuestion();
+    },
+    repeatQuiz: function() {
+      this.quizHandler.repeatQuiz();
     }
   }
 };

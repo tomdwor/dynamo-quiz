@@ -44,7 +44,10 @@
           </div>
 
           <QuizStart v-if="quizState === 'start'" :quizHandler="quizHandler" />
-          <QuizQuestion v-if="quizState === 'ask' || quizState === 'check'" />
+          <QuizQuestion
+            v-if="quizState === 'ask' || quizState === 'check'"
+            :quizHandler="quizHandler"
+          />
           <QuizReview v-if="quizState === 'review'" />
         </div>
       </transition>
