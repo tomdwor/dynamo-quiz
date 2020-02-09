@@ -11,19 +11,7 @@ Basic version of application.
 - [x] quiz list template
 - [x] configuration
 - [x] quiz list - basic version
-- [ ] quiz - basic version (only single answer)
-    - [x] prepare Vuex store
-    - [x] get data from JSON files using Axios
-    - [ ] working quiz
-        - [x] init store values at quiz start
-        - [x] quiz content components
-        - [x] display start content component at quiz start
-        - [x] display question content component after start
-        - [x] go through the questions
-        - [x] mark correct / incorrect answers
-        - [x] quiz header (quiz title, category, current question info, etc.)
-        - [ ] display simple review after last answered question
-        - [ ] answer explanation (if "check" state)
+- [x] quiz - basic version (only single answer)
 - [ ] real content in quiz examples
 
 

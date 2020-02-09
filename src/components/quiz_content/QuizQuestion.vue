@@ -30,6 +30,10 @@
             </div>
           </v-radio>
         </v-radio-group>
+        <div v-if="isNote && quizState === 'check'" class="mt-6">
+          <h3 class="mb-4">Note</h3>
+          <p>{{ noteText }}</p>
+        </div>
       </v-col>
     </v-row>
   </div>
@@ -53,6 +57,18 @@ export default {
     },
     answers: function() {
       return this.quizHandler.getAnswers();
+    },
+    isNote: function() {
+      let note = this.quizHandler.getQuestionNote();
+      return note !== null;
+    },
+    noteText: function() {
+      let note = this.quizHandler.getQuestionNote();
+      let noteText = "";
+      if (note !== null) {
+        noteText = note;
+      }
+      return noteText;
     },
     checkedAnswer: {
       get() {

@@ -149,8 +149,16 @@ export default class QuizHandler {
         is_correct: currentQuestionData["correct"].includes(i + 1)
       });
     }
-
     return answers;
+  }
+
+  getQuestionNote() {
+    let currentQuestionData = this._getCurrentQuestionData();
+    let note = null;
+    if ("note" in currentQuestionData && currentQuestionData["note"] !== "") {
+      note = currentQuestionData["note"];
+    }
+    return note;
   }
 
   getQuestionsNumber() {
