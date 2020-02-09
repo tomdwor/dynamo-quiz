@@ -22,7 +22,9 @@ Basic version of application.
         - [x] go through the questions
         - [x] mark correct / incorrect answers
         - [x] quiz header (quiz title, category, current question info, etc.)
-        - [ ] display review after last answered question
+        - [ ] display simple review after last answered question
+        - [ ] answer explanation (if "check" state)
+- [ ] real content in quiz examples
 
 
 ## Step 2: Markdown/MathJax
@@ -43,9 +45,9 @@ Another answer types:
 - [ ] text-LaTeX
 
 
-## Step 4: Quiz summary
+## Step 4: Quiz review
 
-Once a quiz is completed, display quiz summary.
+Once a quiz is completed, display quiz review.
 
 - [ ] list of questions with statuses (correct/incorrect)
 - [ ] show correct answer
@@ -70,7 +72,6 @@ Any additional details, fixes, adjustments.
 - [ ] limit of questions (e.g. show 20 random questions of all 65)
 - [ ] quizzes list with folders
 - [ ] start random quiz (from current folder)
-- [ ] answer explanation
 - [ ] keyboard controls
 
 
