@@ -69,9 +69,7 @@ Any additional details, fixes, adjustments.
 
 - [ ] random order of answers
 - [ ] multi languages (one file with labels per language)
-- [ ] limit of questions (e.g. show 20 random questions of all 65)
-- [ ] quizzes list with folders
-- [ ] start random quiz (from current folder)
+- [ ] run random quiz
 - [ ] keyboard controls
 
 
