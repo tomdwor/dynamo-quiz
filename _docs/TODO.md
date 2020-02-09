@@ -21,8 +21,8 @@ Basic version of application.
         - [x] display question content component after start
         - [x] go through the questions
         - [x] mark correct / incorrect answers
+        - [x] quiz header (quiz title, category, current question info, etc.)
         - [ ] display review after last answered question
-        - [ ] quiz header (quiz title, category, current question info, etc.)
 
 
 ## Step 2: Markdown/MathJax
@@ -65,12 +65,22 @@ Once a quiz is completed, display quiz summary.
 
 Any additional details, fixes, adjustments.
 
+- [ ] random order of answers
 - [ ] multi languages (one file with labels per language)
 - [ ] limit of questions (e.g. show 20 random questions of all 65)
 - [ ] quizzes list with folders
 - [ ] start random quiz (from current folder)
 - [ ] answer explanation
 - [ ] keyboard controls
+
+
+## Step 7: Quiz configurations
+
+- [ ] configurations
+    - [ ] single quiz
+    - [ ] list of quizzes
+    - [ ] quiz base (multiple lists of quizzes)
+- [ ] tutorial / example files with config
 
 
 ## Other

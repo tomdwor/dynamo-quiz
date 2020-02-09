@@ -11,12 +11,13 @@
         <div v-if="!isLoading && !isQuestionLoading" style="width: 100%;">
           <div v-if="quizState === 'ask' || quizState === 'check'">
             <v-row>
-              <v-col class="py-4 text-left" cols="8">
+              <v-col class="pt-4 text-left" cols="8">
                 <h2>
                   Question {{ currentQuestionNumber }} of {{ questionsNumber }}
                 </h2>
+                {{ quizTitle }}
               </v-col>
-              <v-col class="py-4 text-right" cols="4">
+              <v-col class="pt-4 text-right" cols="4">
                 <v-dialog v-model="dialog" persistent max-width="290">
                   <template v-slot:activator="{ on }">
                     <v-btn v-on="on">Exit quiz</v-btn>
@@ -39,7 +40,7 @@
                 </v-dialog>
               </v-col>
             </v-row>
-            <hr class="mt-2 mb-6" />
+            <hr class="mt-0 mb-6" />
           </div>
           <QuizStart v-if="quizState === 'start'" :quizHandler="quizHandler" />
           <QuizQuestion
@@ -85,6 +86,9 @@ export default {
   computed: {
     quizState: function() {
       return this.quizHandler.getQuizState();
+    },
+    quizTitle: function() {
+      return this.quizHandler.getQuizTitle();
     },
     isQuestionLoading: function() {
       return this.$store.state.isQuestionLoading;
