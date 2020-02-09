@@ -71,6 +71,7 @@ Any additional details, fixes, adjustments.
 - [ ] multi languages (one file with labels per language)
 - [ ] run random quiz
 - [ ] keyboard controls
+- [ ] about page content
 
 
 ## Step 7: Quiz configurations
