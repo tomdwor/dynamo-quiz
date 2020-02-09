@@ -10,13 +10,20 @@
             v-for="(answer, index) in answers"
             :key="index"
             :value="index + 1"
+            :disabled="quizState === 'check'"
             class="align-start"
           >
             <div slot="label">
-              <v-card outlined>
+              <v-card
+                outlined
+                v-bind:class="{
+                  correct: quizState === 'check' && answer.is_correct,
+                  incorrect: quizState === 'check' && !answer.is_correct
+                }"
+              >
                 <v-list-item three-line>
                   <v-list-item-content>
-                    {{ answer }}
+                    {{ answer.value }}
                   </v-list-item-content>
                 </v-list-item>
               </v-card>
@@ -35,6 +42,9 @@ export default {
     quizHandler: Object
   },
   computed: {
+    quizState: function() {
+      return this.quizHandler.getQuizState();
+    },
     quizTitle: function() {
       return this.quizHandler.getQuizTitle();
     },
@@ -68,5 +78,17 @@ export default {
 #answers label,
 #answers label div {
   width: 100%;
+}
+
+.v-item--active .correct {
+  background-color: #a5d6a7 !important;
+}
+
+.correct {
+  background-color: #c8e6c9 !important;
+}
+
+.v-item--active .incorrect {
+  background-color: #ffcdd2 !important;
 }
 </style>

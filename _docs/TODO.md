@@ -20,7 +20,7 @@ Basic version of application.
         - [x] display start content component at quiz start
         - [x] display question content component after start
         - [x] go through the questions
-        - [ ] mark correct / incorrect answers
+        - [x] mark correct / incorrect answers
         - [ ] display review after last answered question
         - [ ] quiz header (quiz title, category, current question info, etc.)
 

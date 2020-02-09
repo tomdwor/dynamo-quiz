@@ -9,7 +9,7 @@
           no-gutters
         >
           <v-col class="py-4 text-left" cols="6">
-            <v-btn class="navi-btn" large :href="'/'">Cancel</v-btn>
+            <v-btn class="navi-btn" large v-on:click="exitQuiz">Cancel</v-btn>
           </v-col>
           <v-col class="py-4 text-right" cols="6">
             <v-btn class="navi-btn" large color="primary" v-on:click="startQuiz"
@@ -75,7 +75,7 @@
             >
           </v-col>
           <v-col class="py-4 text-right" cols="6">
-            <v-btn class="navi-btn" large color="primary" :href="'/'"
+            <v-btn class="navi-btn" large color="primary" v-on:click="exitQuiz"
               >Finish quiz</v-btn
             >
           </v-col>
@@ -133,6 +133,10 @@ export default {
     },
     repeatQuiz: function() {
       this.quizHandler.repeatQuiz();
+    },
+    exitQuiz: function() {
+      this.quizHandler.resetStoreValues();
+      window.location.href = "/";
     }
   }
 };

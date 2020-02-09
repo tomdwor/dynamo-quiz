@@ -14,6 +14,16 @@ export default class QuizHandler {
     this.initStoreValues(quizData);
   }
 
+  resetStoreValues() {
+    this.store.commit("changeQuizState", null);
+    this.store.commit("changeQuizData", null);
+    this.store.commit("changeQuestionsRandomIds", null);
+    this.store.commit("changeAnswers", null);
+
+    this.store.commit("changeCheckedAnswer", null);
+    this.store.commit("changeIsQuestionLoading", false);
+  }
+
   initStoreValues(quizData) {
     let questionsRandomIds = this.randomizeQuestionsIds(quizData);
     let answers = [];
@@ -22,6 +32,9 @@ export default class QuizHandler {
     this.store.commit("changeQuizData", quizData);
     this.store.commit("changeQuestionsRandomIds", questionsRandomIds);
     this.store.commit("changeAnswers", answers);
+
+    this.store.commit("changeCheckedAnswer", null);
+    this.store.commit("changeIsQuestionLoading", false);
   }
 
   getQuizState() {
@@ -66,7 +79,7 @@ export default class QuizHandler {
 
   _getCurrentQuestionId() {
     let index = this.store.state.answers.length;
-    if (this.store.state.quizState == quizStates.CHECK) {
+    if (this.store.state.quizState === quizStates.CHECK) {
       index--;
     }
     return this.store.state.questionsRandomIds[index];
@@ -78,7 +91,12 @@ export default class QuizHandler {
   }
 
   startQuiz() {
-    this.store.commit("changeQuizState", quizStates.ASK);
+    this.store.commit("changeIsQuestionLoading", true);
+    let that = this;
+    setTimeout(function() {
+      that.store.commit("changeQuizState", quizStates.ASK);
+      that.store.commit("changeIsQuestionLoading", false);
+    }, 500);
   }
 
   checkAnswer() {
@@ -89,7 +107,7 @@ export default class QuizHandler {
     if (this.store.state.checkedAnswer === currentQuestionData["correct"][0]) {
       answers.push({ id: currentQuestionId, isCorrect: true });
     } else {
-      answers.push({ id: currentQuestionId, isCorrect: true });
+      answers.push({ id: currentQuestionId, isCorrect: false });
     }
 
     this.store.commit("changeAnswers", answers);
@@ -101,6 +119,7 @@ export default class QuizHandler {
     let displayedQuestionsNumber = this._getDisplayedQuestionsNumber(quizData);
     this.store.commit("changeCheckedAnswer", null);
 
+    this.store.commit("changeIsQuestionLoading", true);
     let that = this;
     setTimeout(function() {
       if (that.store.state.answers.length === displayedQuestionsNumber) {
@@ -108,6 +127,7 @@ export default class QuizHandler {
       } else {
         that.store.commit("changeQuizState", quizStates.ASK);
       }
+      that.store.commit("changeIsQuestionLoading", false);
     }, 500);
   }
 
@@ -118,7 +138,15 @@ export default class QuizHandler {
 
   getAnswers() {
     let currentQuestionData = this._getCurrentQuestionData();
-    return currentQuestionData["answers"];
+    let answers = [];
+    for (let i = 0; i < currentQuestionData["answers"].length; i++) {
+      answers.push({
+        value: currentQuestionData["answers"][i],
+        is_correct: currentQuestionData["correct"].includes(i + 1)
+      });
+    }
+
+    return answers;
   }
 
   getQuestionsNumber() {
@@ -128,6 +156,14 @@ export default class QuizHandler {
 
   getAnswersNumber() {
     return this.store.state.answers.length;
+  }
+
+  getCurrentQuestionNumber() {
+    let index = this.store.state.answers.length;
+    if (this.store.state.quizState === quizStates.CHECK) {
+      index--;
+    }
+    return index + 1;
   }
 
   getCorrectAnswersNumber() {
@@ -157,5 +193,6 @@ export default class QuizHandler {
   repeatQuiz() {
     let quizData = this.store.state.quizData;
     this.initQuiz(quizData);
+    this.startQuiz();
   }
 }

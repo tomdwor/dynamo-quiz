@@ -8,11 +8,13 @@
       style="padding-bottom: 80px;"
     >
       <transition name="fade">
-        <div v-if="!isLoading" style="width: 100%;">
+        <div v-if="!isLoading && !isQuestionLoading" style="width: 100%;">
           <div v-if="quizState === 'ask' || quizState === 'check'">
             <v-row>
               <v-col class="py-4 text-left" cols="8">
-                <h2>Question 15 of 25</h2>
+                <h2>
+                  Question {{ currentQuestionNumber }} of {{ questionsNumber }}
+                </h2>
               </v-col>
               <v-col class="py-4 text-right" cols="4">
                 <v-dialog v-model="dialog" persistent max-width="290">
@@ -37,12 +39,8 @@
                 </v-dialog>
               </v-col>
             </v-row>
-
             <hr class="mt-2 mb-6" />
-
-            (Quiz ID: {{ quizId }})<br /><br />
           </div>
-
           <QuizStart v-if="quizState === 'start'" :quizHandler="quizHandler" />
           <QuizQuestion
             v-if="quizState === 'ask' || quizState === 'check'"
@@ -87,10 +85,20 @@ export default {
   computed: {
     quizState: function() {
       return this.quizHandler.getQuizState();
+    },
+    isQuestionLoading: function() {
+      return this.$store.state.isQuestionLoading;
+    },
+    currentQuestionNumber: function() {
+      return this.quizHandler.getCurrentQuestionNumber();
+    },
+    questionsNumber: function() {
+      return this.quizHandler.getQuestionsNumber();
     }
   },
   methods: {
     exitQuiz: function() {
+      this.quizHandler.resetStoreValues();
       window.location.href = "/";
     },
     validQuizID: function(quizID) {
