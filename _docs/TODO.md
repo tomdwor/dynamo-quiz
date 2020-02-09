@@ -12,7 +12,7 @@ Basic version of application.
 - [x] configuration
 - [x] quiz list - basic version
 - [x] quiz - basic version (only single answer)
-- [ ] real content in quiz examples
+- [x] real content in quiz examples
 
 
 ## Step 2: Markdown/MathJax

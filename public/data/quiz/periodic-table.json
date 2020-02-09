@@ -1,40 +1,87 @@
 {
     "title": "Periodic table",
-    "description": "Periodic table quiz description here...",
+    "description": "A quiz related to periodic table.",
+    "questions_numb": 4,
     "pass_threshold": 70,
     "mode": "practice",
     "questions": [
         {
             "type": "single",
-            "question": "Question 1 text...",
+            "question": "What is the chemical symbol for hydrogen?",
             "answers": [
-                "Answer 1... (C)",
-                "Answer 2...",
-                "Answer 3..."
+                "He",
+                "Na",
+                "Mg",
+                "O",
+                "H",
+                "P"
+            ],
+            "correct": [5]
+        },
+        {
+            "type": "single",
+            "question": "What is the chemical symbol for helium?",
+            "answers": [
+                "He",
+                "Na",
+                "Mg",
+                "O",
+                "H",
+                "P"
             ],
             "correct": [1]
         },
         {
             "type": "single",
-            "question": "Question 2 text...",
+            "question": "What is the chemical symbol for oxygen?",
             "answers": [
-                "Answer 1...",
-                "Answer 2...",
-                "Answer 3...",
-                "Answer 4... (C)"
+                "He",
+                "Na",
+                "Mg",
+                "O",
+                "H",
+                "P"
             ],
-            "correct": [4],
-            "note": "Question 2 note text..."
+            "correct": [4]
         },
         {
             "type": "single",
-            "question": "Question 3 text...",
+            "question": "What is the chemical symbol for sodium?",
             "answers": [
-                "Answer 1...",
-                "Answer 2... (C)"
+                "He",
+                "Na",
+                "Mg",
+                "O",
+                "H",
+                "P"
             ],
-            "correct": [2],
-            "note": "Question 3 note text..."
+            "correct": [2]
+        },
+        {
+            "type": "single",
+            "question": "What is the chemical symbol for magnesium?",
+            "answers": [
+                "He",
+                "Na",
+                "Mg",
+                "O",
+                "H",
+                "P"
+            ],
+            "correct": [3]
+        },
+        {
+            "type": "single",
+            "question": "What is the chemical symbol for phosphorus?",
+            "answers": [
+                "He",
+                "Na",
+                "Mg",
+                "O",
+                "H",
+                "P"
+            ],
+            "correct": [6]
         }
     ]
 }
