@@ -1,7 +1,7 @@
 {
     "title": "Special relativity",
     "description": "Special relativity quiz description here...",
-    "pass_rate": 70,
+    "pass_threshold": 70,
     "questions_numb": 2,
     "mode": "practice",
     "questions": [

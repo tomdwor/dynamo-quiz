@@ -49,6 +49,10 @@ export default class QuizHandler {
     return this.store.state.quizData["description"];
   }
 
+  getPassThreshold() {
+    return this.store.state.quizData["pass_threshold"];
+  }
+
   _getAllQuestionsNumber(quizData) {
     return quizData["questions"].length;
   }

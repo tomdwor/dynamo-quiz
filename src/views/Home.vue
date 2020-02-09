@@ -45,7 +45,7 @@
                       class="primary--text ma-0"
                       :href="'/quiz/' + props.item.id"
                     >
-                      <v-icon>remove_red_eye</v-icon>
+                      <v-icon>play_circle_filled</v-icon>
                     </v-btn>
                   </td>
                 </tr>

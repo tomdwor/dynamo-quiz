@@ -3,26 +3,30 @@
     <v-row class="mb-3">
       <v-col>
         <h2>Quiz review</h2>
-        <p>Quantum mechanics</p>
-        <v-card v-if="true" outlined color="green lighten-4" class="mt-5">
+        <p>{{ quizTitle }}</p>
+        <v-card v-if="isPassed" outlined color="green lighten-4" class="mt-5">
           <v-list-item three-line>
-            <v-list-item-content>
-              PASS - 77%
+            <v-list-item-content class="mx-4">
+              <strong>PASS - {{ correctPercentage }}%</strong>
             </v-list-item-content>
           </v-list-item>
         </v-card>
         <v-card v-else outlined color="red lighten-4" class="mt-5">
           <v-list-item three-line>
-            <v-list-item-content>
-              FAIL - 55%
+            <v-list-item-content class="mx-4">
+              <strong>FAIL - {{ correctPercentage }}%</strong>
             </v-list-item-content>
           </v-list-item>
         </v-card>
+        <p class="mt-2 grey--text">Pass threshold: {{ passThreshold }}%</p>
         <h3 class="mt-6">Stats:</h3>
         <p class="mt-2">
-          All questions: <strong>13</strong><br />
-          Correct: <strong>10</strong><br />
-          Incorrect: <strong>3</strong><br />
+          All questions: <strong>{{ questionsNumber }}</strong
+          ><br />
+          Correct: <strong>{{ correctAnswersNumber }}</strong
+          ><br />
+          Incorrect: <strong>{{ incorrectAnswersNumber }}</strong
+          ><br />
         </p>
       </v-col>
     </v-row>
@@ -31,7 +35,43 @@
 
 <script>
 export default {
-  name: "QuizReview"
+  name: "QuizReview",
+  props: {
+    quizHandler: Object
+  },
+  computed: {
+    quizTitle: function() {
+      return this.quizHandler.getQuizTitle();
+    },
+    questionsNumber() {
+      return this.quizHandler.getQuestionsNumber();
+    },
+    correctAnswersNumber: function() {
+      return this.quizHandler.getCorrectAnswersNumber();
+    },
+    incorrectAnswersNumber: function() {
+      let all = this.quizHandler.getQuestionsNumber();
+      let correct = this.quizHandler.getCorrectAnswersNumber();
+      let incorrect = all - correct;
+      return incorrect;
+    },
+    correctPercentage: function() {
+      let all = this.quizHandler.getQuestionsNumber();
+      let correct = this.quizHandler.getCorrectAnswersNumber();
+      let percentage = Math.round((100 * correct) / all);
+      return percentage;
+    },
+    passThreshold: function() {
+      return this.quizHandler.getPassThreshold();
+    },
+    isPassed: function() {
+      let passThreshold = this.quizHandler.getPassThreshold();
+      let all = this.quizHandler.getQuestionsNumber();
+      let correct = this.quizHandler.getCorrectAnswersNumber();
+      let percentage = (100 * correct) / all;
+      return percentage >= passThreshold;
+    }
+  }
 };
 </script>
 
