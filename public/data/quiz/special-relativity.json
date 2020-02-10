@@ -17,7 +17,7 @@
         },
         {
             "type": "single",
-            "question": "Is special relativity a synonyms of general relativity?",
+            "question": "Is special relativity a synonym of general relativity?",
             "answers": [
                 "Yes",
                 "No"
