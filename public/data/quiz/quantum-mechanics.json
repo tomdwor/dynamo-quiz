@@ -32,8 +32,7 @@
                 "Einstein field equations",
                 "Schrödinger equation"
             ],
-            "correct": [3],
-            "note": "The Schrödinger equation is a linear partial differential equation that describes the wave function or state function of a quantum-mechanical system."
+            "correct": [3]
         }
     ]
 }
