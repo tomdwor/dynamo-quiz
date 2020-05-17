@@ -16,5 +16,6 @@
 
 ## Additional modules
 
+- [vue-mathjax](https://www.npmjs.com/package/vue-mathjax)
 - [Vue with markdown and mathjax](https://notes.innovea.tech/how-render-html-from-markdown-and-latex-in-a-vuejs-component)
     - [nuxtjs/markdownit](https://github.com/nuxt-community/modules/tree/master/packages/markdownit)

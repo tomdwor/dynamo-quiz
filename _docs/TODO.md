@@ -15,13 +15,15 @@ Basic version of application.
 - [x] real content in quiz examples
 
 
-## Step 2: Markdown/MathJax
+## Step 2: MathJax content
 
-Allow using Markdown and MathJax content.
+Allow using MathJax content.
 
-- [ ] quiz description
-- [ ] questions
-- [ ] and answer options
+- [x] quiz description
+- [x] question
+- [x] answer option
+- [x] note
+- [ ] proper quiz content with math formulas
 
 
 ## Step 3: Answer types
