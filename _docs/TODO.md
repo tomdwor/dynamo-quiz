@@ -30,9 +30,8 @@ Allow using MathJax content.
 
 Another answer types:
 
-- [ ] multiple
 - [ ] text
-- [ ] text-LaTeX
+- [ ] multiple
 
 
 ## Step 4: Quiz review
