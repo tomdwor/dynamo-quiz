@@ -34,4 +34,8 @@ export default {
 .fade-leave-active {
   opacity: 0;
 }
+
+.MathJax_Display {
+  margin: 16px 0 !important;
+}
 </style>

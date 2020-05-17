@@ -1,17 +1,18 @@
 {
     "title": "Quantum mechanics",
-    "description": "A quiz related to quantum mechanics.",
+    "description": "A quiz related to quantum mechanics. $$x = {-b \\pm \\sqrt{b^2-4ac} \\over 2a}.$$",
     "pass_threshold": 70,
     "mode": "practice",
     "questions": [
         {
             "type": "single",
-            "question": "Which is correct?",
+            "question": "Which is correct? $$x = {-b \\pm \\sqrt{b^2-4ac} \\over 2a}.$$",
             "answers": [
-                "Quantum mechanics describes nature at the smallest scale.",
-                "Quantum mechanics describes nature at the highest scale."
+                "Quantum mechanics describes nature at the smallest scale. $$x = {-b \\pm \\sqrt{b^2-4ac} \\over 2a}.$$",
+                "Quantum mechanics describes nature at the highest scale. $$x = {-b \\pm \\sqrt{b^2-4ac} \\over 2a}.$$"
             ],
-            "correct": [1]
+            "correct": [1],
+            "note": "This is an example note. $$x = {-b \\pm \\sqrt{b^2-4ac} \\over 2a}.$$"
         },
         {
             "type": "single",

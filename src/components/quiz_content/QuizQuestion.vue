@@ -1,7 +1,9 @@
 <template>
   <div>
     <v-row class="mb-3">
-      <v-col>{{ question }}</v-col>
+      <v-col>
+        <vue-mathjax :formula="question"></vue-mathjax>
+      </v-col>
     </v-row>
     <v-row id="answers">
       <v-col>
@@ -23,7 +25,7 @@
               >
                 <v-list-item three-line>
                   <v-list-item-content>
-                    {{ answer.value }}
+                    <vue-mathjax :formula="answer.value"></vue-mathjax>
                   </v-list-item-content>
                 </v-list-item>
               </v-card>
@@ -32,7 +34,9 @@
         </v-radio-group>
         <div v-if="isNote && quizState === 'check'" class="mt-6">
           <h3 class="mb-4">Note</h3>
-          <p>{{ noteText }}</p>
+          <p>
+            <vue-mathjax :formula="noteText"></vue-mathjax>
+          </p>
         </div>
       </v-col>
     </v-row>
@@ -40,7 +44,11 @@
 </template>
 
 <script>
+import { VueMathjax } from "vue-mathjax";
 export default {
+  components: {
+    "vue-mathjax": VueMathjax
+  },
   name: "QuizQuestion",
   props: {
     quizHandler: Object

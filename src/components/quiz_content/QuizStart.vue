@@ -7,7 +7,7 @@
           <i>{{ questionsNumberInfo }} questions</i>
         </p>
         <p class="mt-6">
-          {{ quizDescription }}
+          <vue-mathjax :formula="quizDescription"></vue-mathjax>
         </p>
       </v-col>
     </v-row>
@@ -15,7 +15,11 @@
 </template>
 
 <script>
+import { VueMathjax } from "vue-mathjax";
 export default {
+  components: {
+    "vue-mathjax": VueMathjax
+  },
   name: "QuizStart",
   props: {
     quizHandler: Object
