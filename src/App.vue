@@ -36,6 +36,6 @@ export default {
 }
 
 .MathJax_Display {
-  margin: 16px 0 !important;
+  margin: 20px 0 !important;
 }
 </style>
