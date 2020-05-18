@@ -31,7 +31,7 @@ Allow using MathJax content.
 Another answer types:
 
 - [ ] text
-- [ ] multiple
+- [ ] multi
 
 
 ## Step 4: Quiz review
@@ -57,6 +57,7 @@ Once a quiz is completed, display quiz review.
 Any additional details, fixes, adjustments.
 
 - [ ] random order of answers
+- [ ] embedding images (description, question, answer option, note)
 - [ ] multi languages (one file with labels per language)
 - [ ] run random quiz
 - [ ] keyboard controls
