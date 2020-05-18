@@ -7,7 +7,7 @@
     </v-row>
     <v-row id="answers">
       <v-col>
-        <v-radio-group v-model="checkedAnswer">
+        <v-radio-group v-if="type === 'single'" v-model="selectedSingleAnswer">
           <v-radio
             v-for="(answer, index) in answers"
             :key="index"
@@ -32,6 +32,25 @@
             </div>
           </v-radio>
         </v-radio-group>
+        <div v-if="type === 'text'">
+          <input
+            id="textAnswerInput"
+            v-model="typedTextAnswer"
+            autocomplete="off"
+            v-bind:class="{
+              correct: quizState === 'check' && isCorrectTextAnswer,
+              incorrect: quizState === 'check' && !isCorrectTextAnswer,
+              identical: quizState === 'check' && isIdenticalTextAnswer
+            }"
+          />
+          <div
+            v-if="quizState === 'check' && !isIdenticalTextAnswer"
+            class="mt-6"
+          >
+            <h3 class="mb-4">Correct answer:</h3>
+            <p>{{ correctTextAnswer }}</p>
+          </div>
+        </div>
         <div v-if="isNote && quizState === 'check'" class="mt-6">
           <h3 class="mb-4">Note</h3>
           <p>
@@ -60,11 +79,17 @@ export default {
     quizTitle: function() {
       return this.quizHandler.getQuizTitle();
     },
+    type: function() {
+      return this.quizHandler.getType();
+    },
     question: function() {
       return this.quizHandler.getQuestion();
     },
     answers: function() {
       return this.quizHandler.getAnswers();
+    },
+    correctTextAnswer() {
+      return this.quizHandler.getCorrectTextAnswer();
     },
     isNote: function() {
       let note = this.quizHandler.getQuestionNote();
@@ -78,13 +103,33 @@ export default {
       }
       return noteText;
     },
-    checkedAnswer: {
+    selectedSingleAnswer: {
       get() {
-        return this.$store.state.checkedAnswer;
+        return this.$store.state.selectedSingleAnswer;
       },
       set(value) {
-        this.$store.commit("changeCheckedAnswer", value);
+        this.$store.commit("changeSelectedSingleAnswer", value);
       }
+    },
+    typedTextAnswer: {
+      get() {
+        return this.$store.state.typedTextAnswer;
+      },
+      set(value) {
+        this.$store.commit("changeTypedTextAnswer", value);
+      }
+    },
+    isCorrectTextAnswer: function() {
+      let userAnswer = this.typedTextAnswer.trim().toLowerCase();
+      let correctAnswer = this.correctTextAnswer.trim().toLowerCase();
+
+      return userAnswer === correctAnswer;
+    },
+    isIdenticalTextAnswer: function() {
+      let userAnswer = this.typedTextAnswer.trim();
+      let correctAnswer = this.correctTextAnswer.trim();
+
+      return userAnswer === correctAnswer;
     }
   }
 };
@@ -113,6 +158,23 @@ export default {
 }
 
 .v-item--active .incorrect {
+  background-color: #ffcdd2 !important;
+}
+
+#textAnswerInput {
+  border: 1px solid #ccc;
+  padding: 5px;
+}
+
+#textAnswerInput.correct.identical {
+  background-color: #a5d6a7 !important;
+}
+
+#textAnswerInput.correct {
+  background-color: #c8e6c9 !important;
+}
+
+#textAnswerInput.incorrect {
   background-color: #ffcdd2 !important;
 }
 </style>

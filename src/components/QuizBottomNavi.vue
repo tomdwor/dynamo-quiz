@@ -118,7 +118,16 @@ export default {
       return progress;
     },
     isDisabledCheckBtn: function() {
-      return this.$store.state.checkedAnswer === null;
+      let type = this.quizHandler.getType();
+      let isDisabled = false;
+
+      if ("single" === type) {
+        isDisabled = this.$store.state.selectedSingleAnswer === null;
+      }
+      if ("text" === type) {
+        isDisabled = this.$store.state.typedTextAnswer.trim() === "";
+      }
+      return isDisabled;
     }
   },
   methods: {

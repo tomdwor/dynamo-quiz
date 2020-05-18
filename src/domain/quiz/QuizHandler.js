@@ -20,7 +20,8 @@ export default class QuizHandler {
     this.store.commit("changeQuestionsRandomIds", null);
     this.store.commit("changeAnswers", null);
 
-    this.store.commit("changeCheckedAnswer", null);
+    this.store.commit("changeSelectedSingleAnswer", null);
+    this.store.commit("changeTypedTextAnswer", "");
     this.store.commit("changeIsQuestionLoading", false);
   }
 
@@ -33,7 +34,8 @@ export default class QuizHandler {
     this.store.commit("changeQuestionsRandomIds", questionsRandomIds);
     this.store.commit("changeAnswers", answers);
 
-    this.store.commit("changeCheckedAnswer", null);
+    this.store.commit("changeSelectedSingleAnswer", null);
+    this.store.commit("changeTypedTextAnswer", "");
     this.store.commit("changeIsQuestionLoading", false);
   }
 
@@ -108,7 +110,20 @@ export default class QuizHandler {
     let answers = this.store.state.answers;
     let currentQuestionId = this._getCurrentQuestionId();
 
-    if (this.store.state.checkedAnswer === currentQuestionData["correct"][0]) {
+    let userAnswer = null;
+    let correctAnswer = null;
+
+    if ("single" === currentQuestionData["type"]) {
+      userAnswer = this.store.state.selectedSingleAnswer;
+      correctAnswer = currentQuestionData["correct"][0];
+    }
+
+    if ("text" === currentQuestionData["type"]) {
+      userAnswer = this.store.state.typedTextAnswer.trim().toLowerCase();
+      correctAnswer = currentQuestionData["answer"].trim().toLowerCase();
+    }
+
+    if (userAnswer === correctAnswer) {
       answers.push({ id: currentQuestionId, isCorrect: true });
     } else {
       answers.push({ id: currentQuestionId, isCorrect: false });
@@ -121,7 +136,8 @@ export default class QuizHandler {
   nextQuestion() {
     let quizData = this.store.state.quizData;
     let displayedQuestionsNumber = this._getDisplayedQuestionsNumber(quizData);
-    this.store.commit("changeCheckedAnswer", null);
+    this.store.commit("changeSelectedSingleAnswer", null);
+    this.store.commit("changeTypedTextAnswer", "");
 
     this.store.commit("changeIsQuestionLoading", true);
     let that = this;
@@ -133,6 +149,11 @@ export default class QuizHandler {
       }
       that.store.commit("changeIsQuestionLoading", false);
     }, 500);
+  }
+
+  getType() {
+    let currentQuestionData = this._getCurrentQuestionData();
+    return currentQuestionData["type"];
   }
 
   getQuestion() {
@@ -150,6 +171,15 @@ export default class QuizHandler {
       });
     }
     return answers;
+  }
+
+  getCorrectTextAnswer() {
+    let currentQuestionData = this._getCurrentQuestionData();
+    let answer = "";
+    if ("text" === currentQuestionData["type"]) {
+      answer = currentQuestionData["answer"];
+    }
+    return answer;
   }
 
   getQuestionNote() {

@@ -30,7 +30,7 @@ Allow using MathJax content.
 
 Another answer types:
 
-- [ ] text
+- [x] text
 - [ ] multi
 
 
@@ -56,7 +56,7 @@ Once a quiz is completed, display quiz review.
 
 Any additional details, fixes, adjustments.
 
-- [ ] random order of answers
+- [ ] random order of answers (hint: use checksums for answers)
 - [ ] embedding images (description, question, answer option, note)
 - [ ] multi languages (one file with labels per language)
 - [ ] run random quiz
