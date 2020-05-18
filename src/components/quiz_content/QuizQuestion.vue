@@ -42,6 +42,7 @@
               incorrect: quizState === 'check' && !isCorrectTextAnswer,
               identical: quizState === 'check' && isIdenticalTextAnswer
             }"
+            ref="textAnswerInput"
           />
           <div
             v-if="quizState === 'check' && !isIdenticalTextAnswer"
@@ -163,7 +164,8 @@ export default {
 
 #textAnswerInput {
   border: 1px solid #ccc;
-  padding: 5px;
+  padding: 10px;
+  width: 100%;
 }
 
 #textAnswerInput.correct.identical {

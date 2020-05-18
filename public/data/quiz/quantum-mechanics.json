@@ -40,6 +40,12 @@
             "question": "Any two (or more) quantum states can be added together and the result will be another valid quantum state. What's the name of this fundamental principle of quantum mechanics?",
             "answer": "superposition",
             "note": "This is some note..."
+        },
+        {
+            "type": "text",
+            "question": "What year were the quanta discovered?",
+            "answer": "1900",
+            "note": "The quanta were discovered by Max Planck in 1900 during work on Black-body radiation."
         }
     ]
 }

@@ -57,10 +57,11 @@ Once a quiz is completed, display quiz review.
 Any additional details, fixes, adjustments.
 
 - [ ] random order of answers (hint: use checksums for answers)
-- [ ] embedding images (description, question, answer option, note)
+- [ ] embedding optional images (in: description, question, answer option, note)
+- [ ] keyboard controls
+- [ ] text input autofocus
 - [ ] multi languages (one file with labels per language)
 - [ ] run random quiz
-- [ ] keyboard controls
 - [ ] about page content
 
 
