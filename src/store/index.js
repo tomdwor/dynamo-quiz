@@ -7,7 +7,7 @@ const state = {
   quizState: null,
   quizData: null,
   questionsRandomIds: null,
-  options: null,
+  answers: null,
   selectedSingleAnswer: null,
   typedTextAnswer: "",
   isQuestionLoading: false
@@ -23,8 +23,8 @@ const mutations = {
   changeQuestionsRandomIds(state, value) {
     state.questionsRandomIds = value;
   },
-  changeOptions(state, value) {
-    state.options = value;
+  changeAnswers(state, value) {
+    state.answers = value;
   },
   changeSelectedSingleAnswer(state, value) {
     state.selectedSingleAnswer = value;

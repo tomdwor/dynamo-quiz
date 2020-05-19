@@ -4,7 +4,7 @@
       <v-col>
         <h2>{{ quizTitle }}</h2>
         <p class="mt-2">
-          <i>{{ questionsNumberInfo }} questions</i>
+          <i>{{ quizStatistics.questionsNumberInfo }} questions</i>
         </p>
         <p class="mt-6">
           <vue-mathjax :formula="quizDescription"></vue-mathjax>
@@ -31,8 +31,8 @@ export default {
     quizDescription: function() {
       return this.quizHandler.getQuizDescription();
     },
-    questionsNumberInfo() {
-      return this.quizHandler.getQuestionsNumberInfo();
+    quizStatistics() {
+      return this.quizHandler.getQuizStatistics();
     }
   }
 };

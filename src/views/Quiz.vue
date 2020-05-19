@@ -13,7 +13,8 @@
             <v-row>
               <v-col class="pt-4 text-left" cols="8">
                 <h2>
-                  Question {{ currentQuestionNumber }} of {{ questionsNumber }}
+                  Question {{ quizStatistics.currentQuestionNumber }} of
+                  {{ quizStatistics.questionsNumber }}
                 </h2>
                 {{ quizTitle }}
               </v-col>
@@ -96,11 +97,8 @@ export default {
     isQuestionLoading: function() {
       return this.$store.state.isQuestionLoading;
     },
-    currentQuestionNumber: function() {
-      return this.quizHandler.getCurrentQuestionNumber();
-    },
-    questionsNumber: function() {
-      return this.quizHandler.getQuestionsNumber();
+    quizStatistics: function() {
+      return this.quizHandler.getQuizStatistics();
     }
   },
   methods: {

@@ -26,11 +26,12 @@
           <v-col class="pt-3 text-center" cols="6">
             <div style="width: calc(100% - 12px);">
               <span style="font-weight: bold;"
-                >{{ correctOptionsNumber }} / {{ optionsNumber }} of
-                {{ questionsNumber }}</span
+                >{{ quizStatistics.correctAnswersNumber }} /
+                {{ quizStatistics.answersNumber }} of
+                {{ quizStatistics.questionsNumber }}</span
               >
               <v-progress-linear
-                v-model="quizProgress"
+                v-model="quizStatistics.progress"
                 color="blue-grey"
                 height="25"
                 reactive
@@ -102,20 +103,8 @@ export default {
     quizState: function() {
       return this.quizHandler.getQuizState();
     },
-    optionsNumber: function() {
-      return this.quizHandler.getOptionsNumber();
-    },
-    correctOptionsNumber: function() {
-      return this.quizHandler.getCorrectOptionsNumber();
-    },
-    questionsNumber: function() {
-      return this.quizHandler.getQuestionsNumber();
-    },
-    quizProgress: function() {
-      let optionsNumb = this.quizHandler.getOptionsNumber();
-      let questionsNumb = this.quizHandler.getQuestionsNumber();
-      let progress = Math.round((100 * optionsNumb) / questionsNumb);
-      return progress;
+    quizStatistics: function() {
+      return this.quizHandler.getQuizStatistics();
     },
     isDisabledCheckBtn: function() {
       let currentQuestion = this.quizHandler.getCurrentQuestion();

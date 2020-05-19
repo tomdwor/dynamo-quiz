@@ -10,12 +10,12 @@
         - [x] getCorrectTextAnswer()
         - [x] getQuestionNote()
     - [x] one method with textAnswerCheckResult = correct|incorrect|identical
-    - [ ] return only quizProgress from handler - not each value separately
-        - [ ] getQuestionsNumber()
-        - [ ] getAnswersNumber()
-        - [ ] getCurrentQuestionNumber()
-        - [ ] getCorrectAnswersNumber()
-        - [ ] getQuestionsNumberInfo()
+    - [x] return only quizStatistics from handler - not each value separately
+        - [x] getQuestionsNumber()
+        - [x] getAnswersNumber()
+        - [x] getCurrentQuestionNumber()
+        - [x] getCorrectAnswersNumber()
+        - [x] getQuestionsNumberInfo()
     - [ ] update names
         - [x] answers -> options
         - [ ] selectedSingleAnswer -> userSingleChoice
