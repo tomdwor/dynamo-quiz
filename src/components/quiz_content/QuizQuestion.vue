@@ -42,7 +42,7 @@
               :disabled="quizState === 'check'"
               :checked="userMultiChoice[index].value"
               :value="option.checksum"
-              @click="toggleMultiOption(index, value)"
+              @click="toggleMultiOption(index, userMultiChoice[index].value)"
             >
               <div slot="label">
                 <v-card
@@ -147,9 +147,8 @@ export default {
   },
   methods: {
     toggleMultiOption(index, value) {
-      let newUserMultiChoice = this.userMultiChoice;
-      newUserMultiChoice[index].value = !value;
-      this.$store.commit("changeUserMultiChoice", newUserMultiChoice);
+      this.userMultiChoice[index].value = !value;
+      this.$store.commit("changeUserMultiChoice", this.userMultiChoice);
     }
   },
   directives: {
