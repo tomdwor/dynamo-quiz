@@ -2,7 +2,16 @@
 
 ## Current
 
-- [ ] return only currentQuestion from handler - no each property separately
+- [ ] refactor
+    - [ ] return only currentQuestion from handler - no each property separately
+    - [ ] update names
+        - [ ] selectedSingleAnswer -> userSingleChoice
+        - [ ] typedTextAnswer -> userTextAnswer
+        - [ ] (not made yet) -> userMultiChoice
+- [ ] (DUPLICATE) random order of answers (hint: use checksums for answers)
+- [ ] (DUPLICATE) multi choice answer
+- [ ] (DUPLICATE) text input autofocus
+- [ ] (DUPLICATE) proper quiz content with math formulas
 
 
 ## Step 1: Basic app
@@ -64,6 +73,8 @@ Any additional details, fixes, adjustments.
 - [ ] embedding optional images (in: description, question, answer option, note)
 - [ ] keyboard controls
 - [ ] text input autofocus
+- [ ] Markdown content with MathJax
+- [ ] separate data and config from repo + examples + README
 - [ ] multi languages (one file with labels per language)
 - [ ] run random quiz
 - [ ] about page content
