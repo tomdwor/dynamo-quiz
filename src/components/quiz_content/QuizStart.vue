@@ -4,7 +4,7 @@
       <v-col>
         <h2>{{ quizTitle }}</h2>
         <p class="mt-2">
-          <i>{{ quizStatistics.questionsNumberInfo }} questions</i>
+          <i>{{ quizStatistics.questionsNumberInfo }}</i>
         </p>
         <p class="mt-6">
           <vue-mathjax :formula="quizDescription"></vue-mathjax>

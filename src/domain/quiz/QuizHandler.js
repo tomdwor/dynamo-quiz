@@ -201,11 +201,12 @@ export default class QuizHandler {
     if (allQuestionsNumb === displayedQuestionsNumber) {
       infoText = allQuestionsNumb;
     } else {
-      infoText = `${displayedQuestionsNumber} of ${allQuestionsNumb}`;
+      infoText = `${displayedQuestionsNumber} of ${allQuestionsNumb} questions`;
     }
 
     return {
       questionsNumber: displayedQuestionsNumber,
+      questionsBaseSize: allQuestionsNumb,
       answersNumber: this.store.state.answers.length,
       currentQuestionNumber: index,
       correctAnswersNumber: correctNumber,
