@@ -1,5 +1,9 @@
 # TODO
 
+## Current
+
+- [ ] return only currentQuestion from handler - no each property separately
+
 
 ## Step 1: Basic app
 
