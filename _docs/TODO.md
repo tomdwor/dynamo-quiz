@@ -2,9 +2,9 @@
 
 ## Current
 
-- [ ] (DUPLICATE) text input autofocus
 - [ ] (DUPLICATE) multi choice answer
 - [ ] (DUPLICATE) proper quiz content with math formulas
+- [ ] (DUPLICATE) keyboard controls
 
 
 ## Step 1: Basic app
@@ -62,9 +62,10 @@ Once a quiz is completed, display quiz review.
 
 Any additional details, fixes, adjustments.
 
+- [x] random order of answers (hint: use checksums for answers)
+- [x] text input autofocus
 - [ ] embedding optional images (in: description, question, answer option, note)
 - [ ] keyboard controls
-- [ ] text input autofocus
 - [ ] Markdown content with MathJax
 - [ ] separate data and config from repo + examples + README
 - [ ] multi languages (one file with labels per language)

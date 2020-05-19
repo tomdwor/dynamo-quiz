@@ -41,7 +41,7 @@
             v-model="userTextAnswer"
             autocomplete="off"
             v-bind:class="{ [textAnswerCheckResult]: quizState === 'check' }"
-            ref="textAnswerInput"
+            v-focus
           />
           <div
             v-if="
@@ -113,6 +113,13 @@ export default {
         return "correct";
       }
       return "incorrect";
+    }
+  },
+  directives: {
+    focus: {
+      inserted: function(el) {
+        el.focus();
+      }
     }
   }
 };
