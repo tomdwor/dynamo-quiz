@@ -14,7 +14,7 @@
           <v-radio
             v-for="(option, index) in currentQuestion.options"
             :key="index"
-            :value="index + 1"
+            :value="option.checksum"
             :disabled="quizState === 'check'"
             class="align-start"
           >

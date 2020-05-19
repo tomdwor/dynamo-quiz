@@ -2,7 +2,6 @@
 
 ## Current
 
-- [ ] (DUPLICATE) random order of answers (hint: use checksums for answers)
 - [ ] (DUPLICATE) text input autofocus
 - [ ] (DUPLICATE) multi choice answer
 - [ ] (DUPLICATE) proper quiz content with math formulas
@@ -63,7 +62,6 @@ Once a quiz is completed, display quiz review.
 
 Any additional details, fixes, adjustments.
 
-- [ ] random order of answers (hint: use checksums for answers)
 - [ ] embedding optional images (in: description, question, answer option, note)
 - [ ] keyboard controls
 - [ ] text input autofocus

@@ -1,3 +1,6 @@
+import md5 from "crypto-js/md5";
+import { shuffle } from "@/domain/utils/array.js";
+
 const quizStates = {
   START: "start",
   ASK: "ask",
@@ -120,8 +123,11 @@ export default class QuizHandler {
     let correctAnswer = null;
 
     if ("single" === currentQuestionData["type"]) {
-      userAnswer = this.store.state.userSingleChoice;
-      correctAnswer = currentQuestionData["correct"][0];
+      userAnswer = this.store.state.userSingleChoice.toString();
+      let correctAnswerIndex = currentQuestionData["correct"][0] - 1;
+      correctAnswer = md5(
+        currentQuestionData["options"][correctAnswerIndex]
+      ).toString();
     }
 
     if ("text" === currentQuestionData["type"]) {
@@ -144,6 +150,7 @@ export default class QuizHandler {
     let displayedQuestionsNumber = this._getDisplayedQuestionsNumber(quizData);
     this.store.commit("changeUserSingleChoice", null);
     this.store.commit("changeUserTextAnswer", "");
+    this.store.commit("changeCurrentQuestionShuffledOptions", []);
 
     this.store.commit("changeIsQuestionLoading", true);
     let that = this;
@@ -157,23 +164,36 @@ export default class QuizHandler {
     }, 500);
   }
 
-  getCurrentQuestion() {
-    let currentQuestionData = this._getCurrentQuestionData();
-
+  _shuffledCurrentQuestionOptions(currentQuestionData) {
     let options = [];
     if (["single", "multi"].includes(currentQuestionData["type"])) {
       for (let i = 0; i < currentQuestionData["options"].length; i++) {
         options.push({
           value: currentQuestionData["options"][i],
-          is_correct: currentQuestionData["correct"].includes(i + 1)
+          is_correct: currentQuestionData["correct"].includes(i + 1),
+          checksum: md5(currentQuestionData["options"][i])
         });
+      }
+    }
+    return shuffle(options);
+  }
+
+  getCurrentQuestion() {
+    let currentQuestionData = this._getCurrentQuestionData();
+
+    let options = [];
+    if (["single", "multi"].includes(currentQuestionData["type"])) {
+      options = this.store.state.currentQuestionShuffledOptions;
+      if (options.length === 0) {
+        options = this._shuffledCurrentQuestionOptions(currentQuestionData);
+        this.store.commit("changeCurrentQuestionShuffledOptions", options);
       }
     }
 
     return {
       type: currentQuestionData["type"],
       question: currentQuestionData["question"],
-      options: options,
+      options: this.store.state.currentQuestionShuffledOptions,
       answer:
         "text" === currentQuestionData["type"]
           ? currentQuestionData["answer"]
@@ -199,7 +219,7 @@ export default class QuizHandler {
     let allQuestionsNumb = this._getAllQuestionsNumber(quizData);
     let infoText = "";
     if (allQuestionsNumb === displayedQuestionsNumber) {
-      infoText = allQuestionsNumb;
+      infoText = `${displayedQuestionsNumber} questions`;
     } else {
       infoText = `${displayedQuestionsNumber} of ${allQuestionsNumb} questions`;
     }

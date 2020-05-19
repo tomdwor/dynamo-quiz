@@ -10,7 +10,8 @@ const state = {
   answers: null,
   userSingleChoice: null,
   userTextAnswer: "",
-  isQuestionLoading: false
+  isQuestionLoading: false,
+  currentQuestionShuffledOptions: []
 };
 
 const mutations = {
@@ -34,6 +35,9 @@ const mutations = {
   },
   changeIsQuestionLoading(state, value) {
     state.isQuestionLoading = value;
+  },
+  changeCurrentQuestionShuffledOptions(state, value) {
+    state.currentQuestionShuffledOptions = value;
   }
 };
 
