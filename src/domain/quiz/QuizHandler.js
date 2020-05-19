@@ -20,8 +20,8 @@ export default class QuizHandler {
     this.store.commit("changeQuestionsRandomIds", null);
     this.store.commit("changeAnswers", null);
 
-    this.store.commit("changeSelectedSingleAnswer", null);
-    this.store.commit("changeTypedTextAnswer", "");
+    this.store.commit("changeUserSingleChoice", null);
+    this.store.commit("changeUserTextAnswer", "");
     this.store.commit("changeIsQuestionLoading", false);
   }
 
@@ -34,8 +34,8 @@ export default class QuizHandler {
     this.store.commit("changeQuestionsRandomIds", questionsRandomIds);
     this.store.commit("changeAnswers", options);
 
-    this.store.commit("changeSelectedSingleAnswer", null);
-    this.store.commit("changeTypedTextAnswer", "");
+    this.store.commit("changeUserSingleChoice", null);
+    this.store.commit("changeUserTextAnswer", "");
     this.store.commit("changeIsQuestionLoading", false);
   }
 
@@ -120,12 +120,12 @@ export default class QuizHandler {
     let correctAnswer = null;
 
     if ("single" === currentQuestionData["type"]) {
-      userAnswer = this.store.state.selectedSingleAnswer;
+      userAnswer = this.store.state.userSingleChoice;
       correctAnswer = currentQuestionData["correct"][0];
     }
 
     if ("text" === currentQuestionData["type"]) {
-      userAnswer = this.store.state.typedTextAnswer.trim().toLowerCase();
+      userAnswer = this.store.state.userTextAnswer.trim().toLowerCase();
       correctAnswer = currentQuestionData["answer"].trim().toLowerCase();
     }
 
@@ -142,8 +142,8 @@ export default class QuizHandler {
   nextQuestion() {
     let quizData = this.store.state.quizData;
     let displayedQuestionsNumber = this._getDisplayedQuestionsNumber(quizData);
-    this.store.commit("changeSelectedSingleAnswer", null);
-    this.store.commit("changeTypedTextAnswer", "");
+    this.store.commit("changeUserSingleChoice", null);
+    this.store.commit("changeUserTextAnswer", "");
 
     this.store.commit("changeIsQuestionLoading", true);
     let that = this;

@@ -111,10 +111,10 @@ export default {
       let isDisabled = false;
 
       if ("single" === currentQuestion.type) {
-        isDisabled = this.$store.state.selectedSingleAnswer === null;
+        isDisabled = this.$store.state.userSingleChoice === null;
       }
       if ("text" === currentQuestion.type) {
-        isDisabled = this.$store.state.typedTextAnswer.trim() === "";
+        isDisabled = this.$store.state.userTextAnswer.trim() === "";
       }
       return isDisabled;
     }

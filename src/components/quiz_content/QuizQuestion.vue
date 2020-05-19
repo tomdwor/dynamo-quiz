@@ -9,7 +9,7 @@
       <v-col>
         <v-radio-group
           v-if="currentQuestion.type === 'single'"
-          v-model="selectedSingleAnswer"
+          v-model="userSingleChoice"
         >
           <v-radio
             v-for="(option, index) in currentQuestion.options"
@@ -38,7 +38,7 @@
         <div v-if="currentQuestion.type === 'text'">
           <input
             id="textAnswerInput"
-            v-model="typedTextAnswer"
+            v-model="userTextAnswer"
             autocomplete="off"
             v-bind:class="{ [textAnswerCheckResult]: quizState === 'check' }"
             ref="textAnswerInput"
@@ -87,24 +87,24 @@ export default {
     currentQuestion: function() {
       return this.quizHandler.getCurrentQuestion();
     },
-    selectedSingleAnswer: {
+    userSingleChoice: {
       get() {
-        return this.$store.state.selectedSingleAnswer;
+        return this.$store.state.userSingleChoice;
       },
       set(value) {
-        this.$store.commit("changeSelectedSingleAnswer", value);
+        this.$store.commit("changeUserSingleChoice", value);
       }
     },
-    typedTextAnswer: {
+    userTextAnswer: {
       get() {
-        return this.$store.state.typedTextAnswer;
+        return this.$store.state.userTextAnswer;
       },
       set(value) {
-        this.$store.commit("changeTypedTextAnswer", value);
+        this.$store.commit("changeUserTextAnswer", value);
       }
     },
     textAnswerCheckResult: function() {
-      let userAnswer = this.typedTextAnswer.trim();
+      let userAnswer = this.userTextAnswer.trim();
       let correctAnswer = this.currentQuestion.answer.trim();
       if (userAnswer === correctAnswer) {
         return "identical";

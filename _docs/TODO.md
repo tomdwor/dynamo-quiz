@@ -2,25 +2,6 @@
 
 ## Current
 
-- [ ] refactor
-    - [x] return only currentQuestion from handler - not each property separately
-        - [x] getType()
-        - [x] getQuestion()
-        - [x] getAnswers()
-        - [x] getCorrectTextAnswer()
-        - [x] getQuestionNote()
-    - [x] one method with textAnswerCheckResult = correct|incorrect|identical
-    - [x] return only quizStatistics from handler - not each value separately
-        - [x] getQuestionsNumber()
-        - [x] getAnswersNumber()
-        - [x] getCurrentQuestionNumber()
-        - [x] getCorrectAnswersNumber()
-        - [x] getQuestionsNumberInfo()
-    - [ ] update names
-        - [x] answers -> options
-        - [ ] selectedSingleAnswer -> userSingleChoice
-        - [ ] typedTextAnswer -> userTextAnswer
-        - [ ] (not made yet) -> userMultiChoice
 - [ ] (DUPLICATE) random order of answers (hint: use checksums for answers)
 - [ ] (DUPLICATE) multi choice answer
 - [ ] (DUPLICATE) text input autofocus
