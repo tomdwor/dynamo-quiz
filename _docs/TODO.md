@@ -2,9 +2,10 @@
 
 ## Current
 
-- [ ] (DUPLICATE) multi choice answer
-- [ ] (DUPLICATE) proper quiz content with math formulas
-- [ ] (DUPLICATE) keyboard controls
+- [ ] multi choice answer (hint: solution in RESEARCH.md)
+- [ ] proper data in example quizzes
+- [ ] keyboard controls
+- [ ] quiz review
 
 
 ## Step 1: Basic app
@@ -29,7 +30,6 @@ Allow using MathJax content.
 - [x] question
 - [x] answer option
 - [x] note
-- [ ] proper quiz content with math formulas
 
 
 ## Step 3: Answer types
