@@ -24,6 +24,7 @@ export default class QuizHandler {
     this.store.commit("changeAnswers", null);
 
     this.store.commit("changeUserSingleChoice", null);
+    this.store.commit("changeUserMultiChoice", null);
     this.store.commit("changeUserTextAnswer", "");
     this.store.commit("changeIsQuestionLoading", false);
   }
@@ -38,6 +39,7 @@ export default class QuizHandler {
     this.store.commit("changeAnswers", options);
 
     this.store.commit("changeUserSingleChoice", null);
+    this.store.commit("changeUserMultiChoice", null);
     this.store.commit("changeUserTextAnswer", "");
     this.store.commit("changeIsQuestionLoading", false);
   }
@@ -149,6 +151,7 @@ export default class QuizHandler {
     let quizData = this.store.state.quizData;
     let displayedQuestionsNumber = this._getDisplayedQuestionsNumber(quizData);
     this.store.commit("changeUserSingleChoice", null);
+    this.store.commit("changeUserMultiChoice", null);
     this.store.commit("changeUserTextAnswer", "");
     this.store.commit("changeCurrentQuestionShuffledOptions", []);
 
@@ -178,6 +181,14 @@ export default class QuizHandler {
     return shuffle(options);
   }
 
+  _prepareUserMultiChoice(currentQuestionData) {
+    let userMultiChoice = [];
+    for (let i = 0; i < currentQuestionData["options"].length; i++) {
+      userMultiChoice.push({ id: i + 1, value: false });
+    }
+    return userMultiChoice;
+  }
+
   getCurrentQuestion() {
     let currentQuestionData = this._getCurrentQuestionData();
 
@@ -187,6 +198,12 @@ export default class QuizHandler {
       if (options.length === 0) {
         options = this._shuffledCurrentQuestionOptions(currentQuestionData);
         this.store.commit("changeCurrentQuestionShuffledOptions", options);
+        if ("multi" === currentQuestionData["type"]) {
+          let userMultiChoice = this._prepareUserMultiChoice(
+            currentQuestionData
+          );
+          this.store.commit("changeUserMultiChoice", userMultiChoice);
+        }
       }
     }
 

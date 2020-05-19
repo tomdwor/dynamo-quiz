@@ -46,6 +46,36 @@
             "question": "What year were the quanta discovered?",
             "answer": "1900",
             "note": "The quanta were discovered by Max Planck in 1900 during work on Black-body radiation."
+        },
+        {
+            "type": "multi",
+            "question": "Multi question 1...",
+            "options": [
+                "Answer 1 (C)",
+                "Answer 2 (C)",
+                "Answer 3"
+            ],
+            "correct": [1, 2]
+        },
+        {
+            "type": "multi",
+            "question": "Multi question 2...",
+            "options": [
+                "Answer 1 (C)",
+                "Answer 2 (C)",
+                "Answer 3"
+            ],
+            "correct": [1, 2]
+        },
+        {
+            "type": "multi",
+            "question": "Multi question 3...",
+            "options": [
+                "Answer 1 (C)",
+                "Answer 2 (C)",
+                "Answer 3"
+            ],
+            "correct": [1, 2]
         }
     ]
 }

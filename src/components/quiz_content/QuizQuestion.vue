@@ -35,6 +35,33 @@
             </div>
           </v-radio>
         </v-radio-group>
+        <div v-if="currentQuestion.type === 'multi'">
+          <div v-for="(option, index) in currentQuestion.options" :key="index">
+            <v-checkbox
+              :id="'toggle-' + option.id"
+              :disabled="quizState === 'check'"
+              :checked="userMultiChoice[index].value"
+              :value="option.checksum"
+              @click="toggleMultiOption(index, value)"
+            >
+              <div slot="label">
+                <v-card
+                  outlined
+                  v-bind:class="{
+                    correct: quizState === 'check' && option.is_correct,
+                    incorrect: quizState === 'check' && !option.is_correct
+                  }"
+                >
+                  <v-list-item three-line>
+                    <v-list-item-content>
+                      <vue-mathjax :formula="option.value"></vue-mathjax>
+                    </v-list-item-content>
+                  </v-list-item>
+                </v-card>
+              </div>
+            </v-checkbox>
+          </div>
+        </div>
         <div v-if="currentQuestion.type === 'text'">
           <input
             id="textAnswerInput"
@@ -95,6 +122,9 @@ export default {
         this.$store.commit("changeUserSingleChoice", value);
       }
     },
+    userMultiChoice: function() {
+      return this.$store.state.userMultiChoice;
+    },
     userTextAnswer: {
       get() {
         return this.$store.state.userTextAnswer;
@@ -113,6 +143,13 @@ export default {
         return "correct";
       }
       return "incorrect";
+    }
+  },
+  methods: {
+    toggleMultiOption(index, value) {
+      let newUserMultiChoice = this.userMultiChoice;
+      newUserMultiChoice[index].value = !value;
+      this.$store.commit("changeUserMultiChoice", newUserMultiChoice);
     }
   },
   directives: {

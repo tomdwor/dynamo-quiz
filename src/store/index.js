@@ -9,6 +9,7 @@ const state = {
   questionsRandomIds: null,
   answers: null,
   userSingleChoice: null,
+  userMultiChoice: [],
   userTextAnswer: "",
   isQuestionLoading: false,
   currentQuestionShuffledOptions: []
@@ -29,6 +30,9 @@ const mutations = {
   },
   changeUserSingleChoice(state, value) {
     state.userSingleChoice = value;
+  },
+  changeUserMultiChoice(state, value) {
+    state.userMultiChoice = value;
   },
   changeUserTextAnswer(state, value) {
     state.userTextAnswer = value;
