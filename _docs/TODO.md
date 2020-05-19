@@ -3,8 +3,8 @@
 ## Current
 
 - [ ] (DUPLICATE) random order of answers (hint: use checksums for answers)
-- [ ] (DUPLICATE) multi choice answer
 - [ ] (DUPLICATE) text input autofocus
+- [ ] (DUPLICATE) multi choice answer
 - [ ] (DUPLICATE) proper quiz content with math formulas
 
 
