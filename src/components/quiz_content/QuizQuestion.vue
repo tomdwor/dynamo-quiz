@@ -2,14 +2,17 @@
   <div>
     <v-row class="mb-3">
       <v-col>
-        <vue-mathjax :formula="question"></vue-mathjax>
+        <vue-mathjax :formula="currentQuestion.question"></vue-mathjax>
       </v-col>
     </v-row>
-    <v-row id="answers">
+    <v-row id="answer">
       <v-col>
-        <v-radio-group v-if="type === 'single'" v-model="selectedSingleAnswer">
+        <v-radio-group
+          v-if="currentQuestion.type === 'single'"
+          v-model="selectedSingleAnswer"
+        >
           <v-radio
-            v-for="(answer, index) in answers"
+            v-for="(option, index) in currentQuestion.options"
             :key="index"
             :value="index + 1"
             :disabled="quizState === 'check'"
@@ -19,20 +22,20 @@
               <v-card
                 outlined
                 v-bind:class="{
-                  correct: quizState === 'check' && answer.is_correct,
-                  incorrect: quizState === 'check' && !answer.is_correct
+                  correct: quizState === 'check' && option.is_correct,
+                  incorrect: quizState === 'check' && !option.is_correct
                 }"
               >
                 <v-list-item three-line>
                   <v-list-item-content>
-                    <vue-mathjax :formula="answer.value"></vue-mathjax>
+                    <vue-mathjax :formula="option.value"></vue-mathjax>
                   </v-list-item-content>
                 </v-list-item>
               </v-card>
             </div>
           </v-radio>
         </v-radio-group>
-        <div v-if="type === 'text'">
+        <div v-if="currentQuestion.type === 'text'">
           <input
             id="textAnswerInput"
             v-model="typedTextAnswer"
@@ -49,13 +52,16 @@
             class="mt-6"
           >
             <h3 class="mb-4">Correct answer:</h3>
-            <p>{{ correctTextAnswer }}</p>
+            <p>{{ currentQuestion.answer }}</p>
           </div>
         </div>
-        <div v-if="isNote && quizState === 'check'" class="mt-6">
+        <div
+          v-if="currentQuestion.note !== '' && quizState === 'check'"
+          class="mt-6"
+        >
           <h3 class="mb-4">Note</h3>
           <p>
-            <vue-mathjax :formula="noteText"></vue-mathjax>
+            <vue-mathjax :formula="currentQuestion.note"></vue-mathjax>
           </p>
         </div>
       </v-col>
@@ -80,29 +86,8 @@ export default {
     quizTitle: function() {
       return this.quizHandler.getQuizTitle();
     },
-    type: function() {
-      return this.quizHandler.getType();
-    },
-    question: function() {
-      return this.quizHandler.getQuestion();
-    },
-    answers: function() {
-      return this.quizHandler.getAnswers();
-    },
-    correctTextAnswer() {
-      return this.quizHandler.getCorrectTextAnswer();
-    },
-    isNote: function() {
-      let note = this.quizHandler.getQuestionNote();
-      return note !== null;
-    },
-    noteText: function() {
-      let note = this.quizHandler.getQuestionNote();
-      let noteText = "";
-      if (note !== null) {
-        noteText = note;
-      }
-      return noteText;
+    currentQuestion: function() {
+      return this.quizHandler.getCurrentQuestion();
     },
     selectedSingleAnswer: {
       get() {
@@ -122,13 +107,13 @@ export default {
     },
     isCorrectTextAnswer: function() {
       let userAnswer = this.typedTextAnswer.trim().toLowerCase();
-      let correctAnswer = this.correctTextAnswer.trim().toLowerCase();
+      let correctAnswer = this.currentQuestion.answer.trim().toLowerCase();
 
       return userAnswer === correctAnswer;
     },
     isIdenticalTextAnswer: function() {
       let userAnswer = this.typedTextAnswer.trim();
-      let correctAnswer = this.correctTextAnswer.trim();
+      let correctAnswer = this.currentQuestion.answer.trim();
 
       return userAnswer === correctAnswer;
     }
@@ -137,16 +122,16 @@ export default {
 </script>
 
 <style>
-#answers .v-item--active .v-card {
+#answer .v-item--active .v-card {
   box-shadow: 0 0 1px 2px #82b1ff;
 }
 
-#answers .v-input--selection-controls__input {
+#answer .v-input--selection-controls__input {
   margin-top: 32px;
 }
 
-#answers label,
-#answers label div {
+#answer label,
+#answer label div {
   width: 100%;
 }
 

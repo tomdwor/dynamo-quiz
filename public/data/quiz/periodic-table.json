@@ -8,7 +8,7 @@
         {
             "type": "single",
             "question": "What is the chemical symbol for hydrogen?",
-            "answers": [
+            "options": [
                 "He",
                 "Na",
                 "Mg",
@@ -21,7 +21,7 @@
         {
             "type": "single",
             "question": "What is the chemical symbol for helium?",
-            "answers": [
+            "options": [
                 "He",
                 "Na",
                 "Mg",
@@ -34,7 +34,7 @@
         {
             "type": "single",
             "question": "What is the chemical symbol for oxygen?",
-            "answers": [
+            "options": [
                 "He",
                 "Na",
                 "Mg",
@@ -47,7 +47,7 @@
         {
             "type": "single",
             "question": "What is the chemical symbol for sodium?",
-            "answers": [
+            "options": [
                 "He",
                 "Na",
                 "Mg",
@@ -60,7 +60,7 @@
         {
             "type": "single",
             "question": "What is the chemical symbol for magnesium?",
-            "answers": [
+            "options": [
                 "He",
                 "Na",
                 "Mg",
@@ -73,7 +73,7 @@
         {
             "type": "single",
             "question": "What is the chemical symbol for phosphorus?",
-            "answers": [
+            "options": [
                 "He",
                 "Na",
                 "Mg",

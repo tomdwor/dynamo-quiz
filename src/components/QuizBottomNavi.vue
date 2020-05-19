@@ -26,7 +26,7 @@
           <v-col class="pt-3 text-center" cols="6">
             <div style="width: calc(100% - 12px);">
               <span style="font-weight: bold;"
-                >{{ correctAnswersNumber }} / {{ answersNumber }} of
+                >{{ correctOptionsNumber }} / {{ optionsNumber }} of
                 {{ questionsNumber }}</span
               >
               <v-progress-linear
@@ -102,29 +102,29 @@ export default {
     quizState: function() {
       return this.quizHandler.getQuizState();
     },
-    answersNumber: function() {
-      return this.quizHandler.getAnswersNumber();
+    optionsNumber: function() {
+      return this.quizHandler.getOptionsNumber();
     },
-    correctAnswersNumber: function() {
-      return this.quizHandler.getCorrectAnswersNumber();
+    correctOptionsNumber: function() {
+      return this.quizHandler.getCorrectOptionsNumber();
     },
     questionsNumber: function() {
       return this.quizHandler.getQuestionsNumber();
     },
     quizProgress: function() {
-      let answersNumb = this.quizHandler.getAnswersNumber();
+      let optionsNumb = this.quizHandler.getOptionsNumber();
       let questionsNumb = this.quizHandler.getQuestionsNumber();
-      let progress = Math.round((100 * answersNumb) / questionsNumb);
+      let progress = Math.round((100 * optionsNumb) / questionsNumb);
       return progress;
     },
     isDisabledCheckBtn: function() {
-      let type = this.quizHandler.getType();
+      let currentQuestion = this.quizHandler.getCurrentQuestion();
       let isDisabled = false;
 
-      if ("single" === type) {
+      if ("single" === currentQuestion.type) {
         isDisabled = this.$store.state.selectedSingleAnswer === null;
       }
-      if ("text" === type) {
+      if ("text" === currentQuestion.type) {
         isDisabled = this.$store.state.typedTextAnswer.trim() === "";
       }
       return isDisabled;

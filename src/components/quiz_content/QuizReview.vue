@@ -23,9 +23,9 @@
         <p class="mt-2">
           All questions: <strong>{{ questionsNumber }}</strong
           ><br />
-          Correct: <strong>{{ correctAnswersNumber }}</strong
+          Correct: <strong>{{ correctOptionsNumber }}</strong
           ><br />
-          Incorrect: <strong>{{ incorrectAnswersNumber }}</strong
+          Incorrect: <strong>{{ incorrectOptionsNumber }}</strong
           ><br />
         </p>
       </v-col>
@@ -46,18 +46,18 @@ export default {
     questionsNumber() {
       return this.quizHandler.getQuestionsNumber();
     },
-    correctAnswersNumber: function() {
-      return this.quizHandler.getCorrectAnswersNumber();
+    correctOptionsNumber: function() {
+      return this.quizHandler.getCorrectOptionsNumber();
     },
-    incorrectAnswersNumber: function() {
+    incorrectOptionsNumber: function() {
       let all = this.quizHandler.getQuestionsNumber();
-      let correct = this.quizHandler.getCorrectAnswersNumber();
+      let correct = this.quizHandler.getCorrectOptionsNumber();
       let incorrect = all - correct;
       return incorrect;
     },
     correctPercentage: function() {
       let all = this.quizHandler.getQuestionsNumber();
-      let correct = this.quizHandler.getCorrectAnswersNumber();
+      let correct = this.quizHandler.getCorrectOptionsNumber();
       let percentage = Math.round((100 * correct) / all);
       return percentage;
     },
@@ -67,7 +67,7 @@ export default {
     isPassed: function() {
       let passThreshold = this.quizHandler.getPassThreshold();
       let all = this.quizHandler.getQuestionsNumber();
-      let correct = this.quizHandler.getCorrectAnswersNumber();
+      let correct = this.quizHandler.getCorrectOptionsNumber();
       let percentage = (100 * correct) / all;
       return percentage >= passThreshold;
     }
@@ -76,16 +76,16 @@ export default {
 </script>
 
 <style>
-#answers .v-item--active .v-card {
+#options .v-item--active .v-card {
   box-shadow: 0 0 1px 2px #82b1ff;
 }
 
-#answers .v-input--selection-controls__input {
+#options .v-input--selection-controls__input {
   margin-top: 32px;
 }
 
-#answers label,
-#answers label div {
+#options label,
+#options label div {
   width: 100%;
 }
 </style>

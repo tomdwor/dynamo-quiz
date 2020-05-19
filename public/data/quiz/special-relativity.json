@@ -7,7 +7,7 @@
         {
             "type": "single",
             "question": "Who has originally proposed the special relativity?",
-            "answers": [
+            "options": [
                 "Hendrik Lorentz",
                 "Max Planck",
                 "Albert Einstein"
@@ -18,7 +18,7 @@
         {
             "type": "single",
             "question": "Is special relativity a synonym of general relativity?",
-            "answers": [
+            "options": [
                 "Yes",
                 "No"
             ],
@@ -28,7 +28,7 @@
         {
             "type": "single",
             "question": "Who has derived the transformation equations underpinning Albert Einstein's theory of special relativity?",
-            "answers": [
+            "options": [
                 "Albert Einstein",
                 "Hendrik Lorentz",
                 "Hermann Minkowski",

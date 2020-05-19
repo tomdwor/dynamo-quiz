@@ -18,7 +18,7 @@ export default class QuizHandler {
     this.store.commit("changeQuizState", null);
     this.store.commit("changeQuizData", null);
     this.store.commit("changeQuestionsRandomIds", null);
-    this.store.commit("changeAnswers", null);
+    this.store.commit("changeOptions", null);
 
     this.store.commit("changeSelectedSingleAnswer", null);
     this.store.commit("changeTypedTextAnswer", "");
@@ -27,12 +27,12 @@ export default class QuizHandler {
 
   initStoreValues(quizData) {
     let questionsRandomIds = this.randomizeQuestionsIds(quizData);
-    let answers = [];
+    let options = [];
 
     this.store.commit("changeQuizState", quizStates.START);
     this.store.commit("changeQuizData", quizData);
     this.store.commit("changeQuestionsRandomIds", questionsRandomIds);
-    this.store.commit("changeAnswers", answers);
+    this.store.commit("changeOptions", options);
 
     this.store.commit("changeSelectedSingleAnswer", null);
     this.store.commit("changeTypedTextAnswer", "");
@@ -84,7 +84,7 @@ export default class QuizHandler {
   }
 
   _getCurrentQuestionId() {
-    let index = this.store.state.answers.length;
+    let index = this.store.state.options.length;
     if (this.store.state.quizState === quizStates.CHECK) {
       index--;
     }
@@ -107,7 +107,7 @@ export default class QuizHandler {
 
   checkAnswer() {
     let currentQuestionData = this._getCurrentQuestionData();
-    let answers = this.store.state.answers;
+    let options = this.store.state.options;
     let currentQuestionId = this._getCurrentQuestionId();
 
     let userAnswer = null;
@@ -124,12 +124,12 @@ export default class QuizHandler {
     }
 
     if (userAnswer === correctAnswer) {
-      answers.push({ id: currentQuestionId, isCorrect: true });
+      options.push({ id: currentQuestionId, isCorrect: true });
     } else {
-      answers.push({ id: currentQuestionId, isCorrect: false });
+      options.push({ id: currentQuestionId, isCorrect: false });
     }
 
-    this.store.commit("changeAnswers", answers);
+    this.store.commit("changeOptions", options);
     this.store.commit("changeQuizState", quizStates.CHECK);
   }
 
@@ -142,7 +142,7 @@ export default class QuizHandler {
     this.store.commit("changeIsQuestionLoading", true);
     let that = this;
     setTimeout(function() {
-      if (that.store.state.answers.length === displayedQuestionsNumber) {
+      if (that.store.state.options.length === displayedQuestionsNumber) {
         that.store.commit("changeQuizState", quizStates.REVIEW);
       } else {
         that.store.commit("changeQuizState", quizStates.ASK);
@@ -151,44 +151,29 @@ export default class QuizHandler {
     }, 500);
   }
 
-  getType() {
+  getCurrentQuestion() {
     let currentQuestionData = this._getCurrentQuestionData();
-    return currentQuestionData["type"];
-  }
 
-  getQuestion() {
-    let currentQuestionData = this._getCurrentQuestionData();
-    return currentQuestionData["question"];
-  }
-
-  getAnswers() {
-    let currentQuestionData = this._getCurrentQuestionData();
-    let answers = [];
-    for (let i = 0; i < currentQuestionData["answers"].length; i++) {
-      answers.push({
-        value: currentQuestionData["answers"][i],
-        is_correct: currentQuestionData["correct"].includes(i + 1)
-      });
+    let options = [];
+    if (["single", "multi"].includes(currentQuestionData["type"])) {
+      for (let i = 0; i < currentQuestionData["options"].length; i++) {
+        options.push({
+          value: currentQuestionData["options"][i],
+          is_correct: currentQuestionData["correct"].includes(i + 1)
+        });
+      }
     }
-    return answers;
-  }
 
-  getCorrectTextAnswer() {
-    let currentQuestionData = this._getCurrentQuestionData();
-    let answer = "";
-    if ("text" === currentQuestionData["type"]) {
-      answer = currentQuestionData["answer"];
-    }
-    return answer;
-  }
-
-  getQuestionNote() {
-    let currentQuestionData = this._getCurrentQuestionData();
-    let note = null;
-    if ("note" in currentQuestionData && currentQuestionData["note"] !== "") {
-      note = currentQuestionData["note"];
-    }
-    return note;
+    return {
+      type: currentQuestionData["type"],
+      question: currentQuestionData["question"],
+      options: options,
+      answer:
+        "text" === currentQuestionData["type"]
+          ? currentQuestionData["answer"]
+          : "",
+      note: "note" in currentQuestionData ? currentQuestionData["note"] : ""
+    };
   }
 
   getQuestionsNumber() {
@@ -196,22 +181,22 @@ export default class QuizHandler {
     return this._getDisplayedQuestionsNumber(quizData);
   }
 
-  getAnswersNumber() {
-    return this.store.state.answers.length;
+  getOptionsNumber() {
+    return this.store.state.options.length;
   }
 
   getCurrentQuestionNumber() {
-    let index = this.store.state.answers.length;
+    let index = this.store.state.options.length;
     if (this.store.state.quizState === quizStates.CHECK) {
       index--;
     }
     return index + 1;
   }
 
-  getCorrectAnswersNumber() {
+  getCorrectOptionsNumber() {
     let correctNumber = 0;
-    for (let i = 0; i < this.store.state.answers.length; i++) {
-      if (this.store.state.answers[i]["isCorrect"]) {
+    for (let i = 0; i < this.store.state.options.length; i++) {
+      if (this.store.state.options[i]["isCorrect"]) {
         correctNumber++;
       }
     }

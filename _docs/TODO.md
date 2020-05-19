@@ -3,12 +3,13 @@
 ## Current
 
 - [ ] refactor
-    - [ ] return only currentQuestion from handler - not each property separately
-        - [ ] getType()
-        - [ ] getQuestion()
-        - [ ] getAnswers()
-        - [ ] getCorrectTextAnswer()
-        - [ ] getQuestionNote()
+    - [x] return only currentQuestion from handler - not each property separately
+        - [x] getType()
+        - [x] getQuestion()
+        - [x] getAnswers()
+        - [x] getCorrectTextAnswer()
+        - [x] getQuestionNote()
+    - [ ] one method with textAnswerCheckResult = correct|incorrect|identical
     - [ ] return only quizProgress from handler - not each value separately
         - [ ] getQuestionsNumber()
         - [ ] getAnswersNumber()
@@ -16,6 +17,7 @@
         - [ ] getCorrectAnswersNumber()
         - [ ] getQuestionsNumberInfo()
     - [ ] update names
+        - [x] answers -> options
         - [ ] selectedSingleAnswer -> userSingleChoice
         - [ ] typedTextAnswer -> userTextAnswer
         - [ ] (not made yet) -> userMultiChoice

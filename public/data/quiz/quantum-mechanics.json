@@ -7,7 +7,7 @@
         {
             "type": "single",
             "question": "Which is correct? $$x = {-b \\pm \\sqrt{b^2-4ac} \\over 2a}.$$",
-            "answers": [
+            "options": [
                 "Quantum mechanics describes nature at the smallest scale. $$x = {-b \\pm \\sqrt{b^2-4ac} \\over 2a}.$$",
                 "Quantum mechanics describes nature at the highest scale. $$x = {-b \\pm \\sqrt{b^2-4ac} \\over 2a}.$$"
             ],
@@ -17,7 +17,7 @@
         {
             "type": "single",
             "question": "Who is the originator of quantum theory?",
-            "answers": [
+            "options": [
                 "Niels Bohr",
                 "Albert Einstein",
                 "Max Planck",
@@ -28,7 +28,7 @@
         {
             "type": "single",
             "question": "What describes the wave function or state function of a quantum-mechanical system?",
-            "answers": [
+            "options": [
                 "Maxwell's equations",
                 "Einstein field equations",
                 "Schrödinger equation"

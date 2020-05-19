@@ -37,18 +37,3 @@ export default {
   }
 };
 </script>
-
-<style>
-#answers .v-item--active .v-card {
-  box-shadow: 0 0 1px 2px #82b1ff;
-}
-
-#answers .v-input--selection-controls__input {
-  margin-top: 32px;
-}
-
-#answers label,
-#answers label div {
-  width: 100%;
-}
-</style>
