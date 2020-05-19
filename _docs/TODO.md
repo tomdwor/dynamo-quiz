@@ -3,7 +3,18 @@
 ## Current
 
 - [ ] refactor
-    - [ ] return only currentQuestion from handler - no each property separately
+    - [ ] return only currentQuestion from handler - not each property separately
+        - [ ] getType()
+        - [ ] getQuestion()
+        - [ ] getAnswers()
+        - [ ] getCorrectTextAnswer()
+        - [ ] getQuestionNote()
+    - [ ] return only quizProgress from handler - not each value separately
+        - [ ] getQuestionsNumber()
+        - [ ] getAnswersNumber()
+        - [ ] getCurrentQuestionNumber()
+        - [ ] getCorrectAnswersNumber()
+        - [ ] getQuestionsNumberInfo()
     - [ ] update names
         - [ ] selectedSingleAnswer -> userSingleChoice
         - [ ] typedTextAnswer -> userTextAnswer
