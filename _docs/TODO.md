@@ -9,7 +9,7 @@
         - [x] getAnswers()
         - [x] getCorrectTextAnswer()
         - [x] getQuestionNote()
-    - [ ] one method with textAnswerCheckResult = correct|incorrect|identical
+    - [x] one method with textAnswerCheckResult = correct|incorrect|identical
     - [ ] return only quizProgress from handler - not each value separately
         - [ ] getQuestionsNumber()
         - [ ] getAnswersNumber()

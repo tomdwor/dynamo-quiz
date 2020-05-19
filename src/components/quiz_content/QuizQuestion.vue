@@ -40,15 +40,13 @@
             id="textAnswerInput"
             v-model="typedTextAnswer"
             autocomplete="off"
-            v-bind:class="{
-              correct: quizState === 'check' && isCorrectTextAnswer,
-              incorrect: quizState === 'check' && !isCorrectTextAnswer,
-              identical: quizState === 'check' && isIdenticalTextAnswer
-            }"
+            v-bind:class="{ [textAnswerCheckResult]: quizState === 'check' }"
             ref="textAnswerInput"
           />
           <div
-            v-if="quizState === 'check' && !isIdenticalTextAnswer"
+            v-if="
+              quizState === 'check' && textAnswerCheckResult !== 'identical'
+            "
             class="mt-6"
           >
             <h3 class="mb-4">Correct answer:</h3>
@@ -105,17 +103,16 @@ export default {
         this.$store.commit("changeTypedTextAnswer", value);
       }
     },
-    isCorrectTextAnswer: function() {
-      let userAnswer = this.typedTextAnswer.trim().toLowerCase();
-      let correctAnswer = this.currentQuestion.answer.trim().toLowerCase();
-
-      return userAnswer === correctAnswer;
-    },
-    isIdenticalTextAnswer: function() {
+    textAnswerCheckResult: function() {
       let userAnswer = this.typedTextAnswer.trim();
       let correctAnswer = this.currentQuestion.answer.trim();
-
-      return userAnswer === correctAnswer;
+      if (userAnswer === correctAnswer) {
+        return "identical";
+      }
+      if (userAnswer.toLowerCase() === correctAnswer.toLowerCase()) {
+        return "correct";
+      }
+      return "incorrect";
     }
   }
 };
@@ -153,7 +150,7 @@ export default {
   width: 100%;
 }
 
-#textAnswerInput.correct.identical {
+#textAnswerInput.identical {
   background-color: #a5d6a7 !important;
 }
 
