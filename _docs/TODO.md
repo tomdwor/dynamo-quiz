@@ -2,7 +2,10 @@
 
 ## Current
 
-- [ ] multi choice answer (hint: solution in RESEARCH.md)
+- [ ] multi choice answer
+    - [ ] mark correct/incorrect fix
+    - [ ] show info how many should be checked
+    - [ ] allow click CHECK only if are checked allowed number
 - [ ] proper data in example quizzes
 - [ ] keyboard controls
 - [ ] quiz review
