@@ -42,7 +42,13 @@
               :disabled="quizState === 'check'"
               :checked="userMultiChoice[index].value"
               :value="option.checksum"
-              @click="toggleMultiOption(index, userMultiChoice[index].value)"
+              @click="
+                toggleMultiOption(
+                  index,
+                  userMultiChoice[index].value,
+                  option.checksum
+                )
+              "
             >
               <div slot="label">
                 <v-card
@@ -146,8 +152,9 @@ export default {
     }
   },
   methods: {
-    toggleMultiOption(index, value) {
+    toggleMultiOption(index, value, checksum) {
       this.userMultiChoice[index].value = !value;
+      this.userMultiChoice[index].checksum = !value ? checksum : null;
       this.$store.commit("changeUserMultiChoice", this.userMultiChoice);
     }
   },

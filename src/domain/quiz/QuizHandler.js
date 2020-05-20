@@ -123,6 +123,7 @@ export default class QuizHandler {
 
     let userAnswer = null;
     let correctAnswer = null;
+    let result = null;
 
     if ("single" === currentQuestionData["type"]) {
       userAnswer = this.store.state.userSingleChoice.toString();
@@ -130,14 +131,38 @@ export default class QuizHandler {
       correctAnswer = md5(
         currentQuestionData["options"][correctAnswerIndex]
       ).toString();
+      result = userAnswer === correctAnswer;
+    }
+
+    if ("multi" === currentQuestionData["type"]) {
+      let userAnswers = [];
+      for (let i = 0; i < this.store.state.userMultiChoice.length; i++) {
+        if (this.store.state.userMultiChoice[i].value === true) {
+          userAnswers.push(
+            this.store.state.userMultiChoice[i].checksum.toString()
+          );
+        }
+      }
+      let correctAnswers = [];
+      for (let i = 0; i < currentQuestionData["correct"].length; i++) {
+        let correctAnswerIndex = currentQuestionData["correct"][i] - 1;
+        correctAnswers.push(
+          md5(currentQuestionData["options"][correctAnswerIndex]).toString()
+        );
+      }
+      result =
+        JSON.stringify(userAnswers.sort()) ===
+        JSON.stringify(correctAnswers.sort());
+      console.log([userAnswers, correctAnswers]);
     }
 
     if ("text" === currentQuestionData["type"]) {
       userAnswer = this.store.state.userTextAnswer.trim().toLowerCase();
       correctAnswer = currentQuestionData["answer"].trim().toLowerCase();
+      result = userAnswer === correctAnswer;
     }
 
-    if (userAnswer === correctAnswer) {
+    if (result) {
       options.push({ id: currentQuestionId, isCorrect: true });
     } else {
       options.push({ id: currentQuestionId, isCorrect: false });
@@ -184,7 +209,7 @@ export default class QuizHandler {
   _prepareUserMultiChoice(currentQuestionData) {
     let userMultiChoice = [];
     for (let i = 0; i < currentQuestionData["options"].length; i++) {
-      userMultiChoice.push({ id: i + 1, value: false });
+      userMultiChoice.push({ id: i + 1, value: false, checksum: null });
     }
     return userMultiChoice;
   }
