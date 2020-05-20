@@ -153,7 +153,6 @@ export default class QuizHandler {
       result =
         JSON.stringify(userAnswers.sort()) ===
         JSON.stringify(correctAnswers.sort());
-      console.log([userAnswers, correctAnswers]);
     }
 
     if ("text" === currentQuestionData["type"]) {
