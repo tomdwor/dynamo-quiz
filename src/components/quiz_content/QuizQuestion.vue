@@ -36,37 +36,38 @@
           </v-radio>
         </v-radio-group>
         <div v-if="currentQuestion.type === 'multi'">
-          <div v-for="(option, index) in currentQuestion.options" :key="index">
-            <v-checkbox
-              :id="'toggle-' + option.id"
-              :disabled="quizState === 'check'"
-              :checked="userMultiChoice[index].value"
-              :value="option.checksum"
-              @change="
-                toggleMultiOption(
-                  index,
-                  userMultiChoice[index].value,
-                  option.checksum
-                )
-              "
-            >
-              <div slot="label">
-                <v-card
-                  outlined
-                  v-bind:class="{
-                    correct: quizState === 'check' && option.is_correct,
-                    incorrect: quizState === 'check' && !option.is_correct
-                  }"
-                >
-                  <v-list-item three-line>
-                    <v-list-item-content>
-                      <vue-mathjax :formula="option.value"></vue-mathjax>
-                    </v-list-item-content>
-                  </v-list-item>
-                </v-card>
-              </div>
-            </v-checkbox>
-          </div>
+          <v-checkbox
+            v-for="(option, index) in currentQuestion.options"
+            :key="index"
+            :id="'toggle-' + option.id"
+            :disabled="quizState === 'check'"
+            :checked="userMultiChoice[index].value"
+            :value="option.checksum"
+            @change="
+              toggleMultiOption(
+                index,
+                userMultiChoice[index].value,
+                option.checksum
+              )
+            "
+            class="align-start"
+          >
+            <div slot="label">
+              <v-card
+                outlined
+                v-bind:class="{
+                  correct: quizState === 'check' && option.is_correct,
+                  incorrect: quizState === 'check' && !option.is_correct
+                }"
+              >
+                <v-list-item three-line>
+                  <v-list-item-content>
+                    <vue-mathjax :formula="option.value"></vue-mathjax>
+                  </v-list-item-content>
+                </v-list-item>
+              </v-card>
+            </div>
+          </v-checkbox>
         </div>
         <div v-if="currentQuestion.type === 'text'">
           <input
@@ -174,8 +175,30 @@ export default {
   box-shadow: 0 0 1px 2px #82b1ff;
 }
 
+#answer .v-input--checkbox.v-input--is-label-active .v-card {
+  box-shadow: 0 0 1px 2px #82b1ff;
+}
+
 #answer .v-input--selection-controls__input {
   margin-top: 32px;
+}
+
+#answer .v-input__slot {
+  -webkit-box-align: flex-start;
+  -ms-flex-align: flex-start;
+  align-items: flex-start;
+}
+
+#answer .v-input--selection-controls {
+  margin-top: 0;
+}
+
+#answer .v-input__control .v-messages {
+  display: none !important;
+}
+
+#answer .v-input__slot {
+  margin-bottom: 4px;
 }
 
 #answer label,
