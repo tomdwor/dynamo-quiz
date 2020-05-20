@@ -5,49 +5,6 @@
     "mode": "practice",
     "questions": [
         {
-            "type": "single",
-            "question": "Which is correct? $$x = {-b \\pm \\sqrt{b^2-4ac} \\over 2a}.$$",
-            "options": [
-                "Quantum mechanics describes nature at the smallest scale. $$x = {-b \\pm \\sqrt{b^2-4ac} \\over 2a}.$$",
-                "Quantum mechanics describes nature at the highest scale. $$x = {-b \\pm \\sqrt{b^2-4ac} \\over 2a}.$$"
-            ],
-            "correct": [1],
-            "note": "This is an example note. $$x = {-b \\pm \\sqrt{b^2-4ac} \\over 2a}.$$"
-        },
-        {
-            "type": "single",
-            "question": "Who is the originator of quantum theory?",
-            "options": [
-                "Niels Bohr",
-                "Albert Einstein",
-                "Max Planck",
-                "Erwin Schrödinger"
-            ],
-            "correct": [3]
-        },
-        {
-            "type": "single",
-            "question": "What describes the wave function or state function of a quantum-mechanical system?",
-            "options": [
-                "Maxwell's equations",
-                "Einstein field equations",
-                "Schrödinger equation"
-            ],
-            "correct": [3]
-        },
-        {
-            "type": "text",
-            "question": "Any two (or more) quantum states can be added together and the result will be another valid quantum state. What's the name of this fundamental principle of quantum mechanics?",
-            "answer": "superposition",
-            "note": "This is some note..."
-        },
-        {
-            "type": "text",
-            "question": "What year were the quanta discovered?",
-            "answer": "1900",
-            "note": "The quanta were discovered by Max Planck in 1900 during work on Black-body radiation."
-        },
-        {
             "type": "multi",
             "question": "Multi question 1...",
             "options": [

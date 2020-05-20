@@ -42,7 +42,7 @@
               :disabled="quizState === 'check'"
               :checked="userMultiChoice[index].value"
               :value="option.checksum"
-              @click="
+              @change="
                 toggleMultiOption(
                   index,
                   userMultiChoice[index].value,
@@ -153,6 +153,7 @@ export default {
   },
   methods: {
     toggleMultiOption(index, value, checksum) {
+      console.log("toggle multi option");
       this.userMultiChoice[index].value = !value;
       this.userMultiChoice[index].checksum = !value ? checksum : null;
       this.$store.commit("changeUserMultiChoice", this.userMultiChoice);
