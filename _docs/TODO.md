@@ -5,6 +5,9 @@
 - [ ] proper data in example quizzes
 - [ ] keyboard controls
 - [ ] quiz review
+- [ ] Markdown content with MathJax
+- [ ] embedding optional images (in: description, question, answer option, note)
+- [ ] separate data and config from repo + examples + README
 
 
 ## Step 1: Basic app
