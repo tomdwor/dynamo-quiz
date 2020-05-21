@@ -2,9 +2,6 @@
 
 ## Current
 
-- [ ] multi choice answer
-    - [ ] show info how many should be checked
-    - [ ] allow click CHECK only if are checked allowed number
 - [ ] proper data in example quizzes
 - [ ] keyboard controls
 - [ ] quiz review
@@ -39,7 +36,7 @@ Allow using MathJax content.
 Another answer types:
 
 - [x] text
-- [ ] multi
+- [x] multi
 
 
 ## Step 4: Quiz review
@@ -64,7 +61,7 @@ Once a quiz is completed, display quiz review.
 
 Any additional details, fixes, adjustments.
 
-- [x] random order of answers (hint: use checksums for answers)
+- [x] random order of answers
 - [x] text input autofocus
 - [ ] embedding optional images (in: description, question, answer option, note)
 - [ ] keyboard controls
@@ -73,6 +70,10 @@ Any additional details, fixes, adjustments.
 - [ ] multi languages (one file with labels per language)
 - [ ] run random quiz
 - [ ] about page content
+- [ ] other question types
+    - [ ] text-two-ways
+    - [ ] display-confirm
+    - [ ] draw-confirm
 
 
 ## Step 7: Quiz configurations

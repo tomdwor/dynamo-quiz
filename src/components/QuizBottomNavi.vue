@@ -113,6 +113,16 @@ export default {
       if ("single" === currentQuestion.type) {
         isDisabled = this.$store.state.userSingleChoice === null;
       }
+      if ("multi" === currentQuestion.type) {
+        let userMultiChoice = this.$store.state.userMultiChoice;
+        let selectedCount = 0;
+        for (let i = 0; i < userMultiChoice.length; i++) {
+          if (userMultiChoice[i].value === true) {
+            selectedCount++;
+          }
+        }
+        isDisabled = selectedCount !== currentQuestion.correct.length;
+      }
       if ("text" === currentQuestion.type) {
         isDisabled = this.$store.state.userTextAnswer.trim() === "";
       }

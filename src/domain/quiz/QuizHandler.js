@@ -239,6 +239,9 @@ export default class QuizHandler {
         "text" === currentQuestionData["type"]
           ? currentQuestionData["answer"]
           : "",
+      correct: ["single", "multi"].includes(currentQuestionData["type"])
+        ? currentQuestionData["correct"]
+        : [],
       note: "note" in currentQuestionData ? currentQuestionData["note"] : ""
     };
   }

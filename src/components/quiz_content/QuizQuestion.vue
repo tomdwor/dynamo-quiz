@@ -36,6 +36,9 @@
           </v-radio>
         </v-radio-group>
         <div v-if="currentQuestion.type === 'multi'">
+          <div class="title my-4" id="howManySelectInfo">
+            {{ howManySelectInfo }}
+          </div>
           <v-checkbox
             v-for="(option, index) in currentQuestion.options"
             :key="index"
@@ -121,6 +124,15 @@ export default {
     currentQuestion: function() {
       return this.quizHandler.getCurrentQuestion();
     },
+    howManySelectInfo: function() {
+      let currentQuestion = this.quizHandler.getCurrentQuestion();
+      if ("multi" !== currentQuestion.type) {
+        return "";
+      }
+      let howMany = currentQuestion.correct.length;
+      let what = howMany > 1 ? "answers" : "answer";
+      return `Select ${howMany} ${what}:`;
+    },
     userSingleChoice: {
       get() {
         return this.$store.state.userSingleChoice;
@@ -154,7 +166,6 @@ export default {
   },
   methods: {
     toggleMultiOption(index, value, checksum) {
-      console.log("toggle multi option");
       this.userMultiChoice[index].value = !value;
       this.userMultiChoice[index].checksum = !value ? checksum : null;
       this.$store.commit("changeUserMultiChoice", this.userMultiChoice);
