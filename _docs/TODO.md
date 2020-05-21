@@ -3,7 +3,6 @@
 ## Current
 
 - [ ] multi choice answer
-    - [ ] mark correct/incorrect fix
     - [ ] show info how many should be checked
     - [ ] allow click CHECK only if are checked allowed number
 - [ ] proper data in example quizzes

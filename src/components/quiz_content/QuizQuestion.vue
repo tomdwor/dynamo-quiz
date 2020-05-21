@@ -206,7 +206,8 @@ export default {
   width: 100%;
 }
 
-.v-item--active .correct {
+.v-item--active .correct,
+.v-input--checkbox.v-input--is-label-active .correct {
   background-color: #a5d6a7 !important;
 }
 
@@ -214,7 +215,8 @@ export default {
   background-color: #c8e6c9 !important;
 }
 
-.v-item--active .incorrect {
+.v-item--active .incorrect,
+.v-input--checkbox.v-input--is-label-active .incorrect {
   background-color: #ffcdd2 !important;
 }
 
