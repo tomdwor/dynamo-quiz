@@ -21,7 +21,7 @@ export default class QuizHandler {
     this.store.commit("changeQuizState", null);
     this.store.commit("changeQuizData", null);
     this.store.commit("changeQuestionsRandomIds", null);
-    this.store.commit("changeAnswers", null);
+    this.store.commit("changeQuestionOptions", null);
 
     this.store.commit("changeUserSingleChoice", null);
     this.store.commit("changeUserMultiChoice", null);
@@ -36,7 +36,7 @@ export default class QuizHandler {
     this.store.commit("changeQuizState", quizStates.START);
     this.store.commit("changeQuizData", quizData);
     this.store.commit("changeQuestionsRandomIds", questionsRandomIds);
-    this.store.commit("changeAnswers", options);
+    this.store.commit("changeQuestionOptions", options);
 
     this.store.commit("changeUserSingleChoice", null);
     this.store.commit("changeUserMultiChoice", null);
@@ -89,7 +89,7 @@ export default class QuizHandler {
   }
 
   _getCurrentQuestionId() {
-    let index = this.store.state.answers.length;
+    let index = this.store.state.questionOptions.length;
     if (this.store.state.quizState === quizStates.CHECK) {
       index--;
     }
@@ -118,7 +118,7 @@ export default class QuizHandler {
 
   checkAnswer() {
     let currentQuestionData = this._getCurrentQuestionData();
-    let options = this.store.state.answers;
+    let options = this.store.state.questionOptions;
     let currentQuestionId = this._getCurrentQuestionId();
 
     let userAnswer = null;
@@ -167,7 +167,7 @@ export default class QuizHandler {
       options.push({ id: currentQuestionId, isCorrect: false });
     }
 
-    this.store.commit("changeAnswers", options);
+    this.store.commit("changeQuestionOptions", options);
     this.store.commit("changeQuizState", quizStates.CHECK);
   }
 
@@ -182,7 +182,9 @@ export default class QuizHandler {
     this.store.commit("changeIsQuestionLoading", true);
     let that = this;
     setTimeout(function() {
-      if (that.store.state.answers.length === displayedQuestionsNumber) {
+      if (
+        that.store.state.questionOptions.length === displayedQuestionsNumber
+      ) {
         that.store.commit("changeQuizState", quizStates.REVIEW);
       } else {
         that.store.commit("changeQuizState", quizStates.ASK);
@@ -249,13 +251,13 @@ export default class QuizHandler {
   getQuizStatistics() {
     let quizData = this.store.state.quizData;
     let index =
-      this.store.state.answers.length +
+      this.store.state.questionOptions.length +
       (this.store.state.quizState !== quizStates.CHECK ? 1 : 0);
     let displayedQuestionsNumber = this._getDisplayedQuestionsNumber(quizData);
 
     let correctNumber = 0;
-    for (let i = 0; i < this.store.state.answers.length; i++) {
-      if (this.store.state.answers[i]["isCorrect"]) {
+    for (let i = 0; i < this.store.state.questionOptions.length; i++) {
+      if (this.store.state.questionOptions[i]["isCorrect"]) {
         correctNumber++;
       }
     }
@@ -271,7 +273,7 @@ export default class QuizHandler {
     return {
       questionsNumber: displayedQuestionsNumber,
       questionsBaseSize: allQuestionsNumb,
-      answersNumber: this.store.state.answers.length,
+      answersNumber: this.store.state.questionOptions.length,
       currentQuestionNumber: index,
       correctAnswersNumber: correctNumber,
       incorrectAnswersNumber: displayedQuestionsNumber - correctNumber,
@@ -280,7 +282,8 @@ export default class QuizHandler {
       ),
       questionsNumberInfo: infoText,
       progress: Math.round(
-        (100 * this.store.state.answers.length) / displayedQuestionsNumber
+        (100 * this.store.state.questionOptions.length) /
+          displayedQuestionsNumber
       )
     };
   }

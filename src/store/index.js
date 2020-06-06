@@ -7,12 +7,13 @@ const state = {
   quizState: null,
   quizData: null,
   questionsRandomIds: null,
-  answers: null,
+  questionOptions: null,
   userSingleChoice: null,
   userMultiChoice: [],
   userTextAnswer: "",
   isQuestionLoading: false,
-  currentQuestionShuffledOptions: []
+  currentQuestionShuffledOptions: [],
+  userAnswerHistory: null
 };
 
 const mutations = {
@@ -25,8 +26,8 @@ const mutations = {
   changeQuestionsRandomIds(state, value) {
     state.questionsRandomIds = value;
   },
-  changeAnswers(state, value) {
-    state.answers = value;
+  changeQuestionOptions(state, value) {
+    state.questionOptions = value;
   },
   changeUserSingleChoice(state, value) {
     state.userSingleChoice = value;
@@ -42,6 +43,9 @@ const mutations = {
   },
   changeCurrentQuestionShuffledOptions(state, value) {
     state.currentQuestionShuffledOptions = value;
+  },
+  changeUserAnswerHistory(state, value) {
+    state.userAnswerHistory = value;
   }
 };
 
