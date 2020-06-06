@@ -2,9 +2,12 @@
 
 ## Current
 
+- [ ] quiz review
+    - [x] basic version
+    - [ ] UX update (styles, "Scroll to top" btn, etc.)
+    - [ ] display note if exists
 - [ ] proper data in example quizzes
 - [ ] keyboard controls
-- [ ] quiz review
 - [ ] Markdown content with MathJax
 - [ ] embedding optional images (in: description, question, answer option, note)
 - [ ] separate data and config from repo + examples + README
