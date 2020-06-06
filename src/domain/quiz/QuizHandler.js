@@ -22,6 +22,7 @@ export default class QuizHandler {
     this.store.commit("changeQuizData", null);
     this.store.commit("changeQuestionsRandomIds", null);
     this.store.commit("changeQuestionOptions", null);
+    this.store.commit("changeUserAnswerHistory", null);
 
     this.store.commit("changeUserSingleChoice", null);
     this.store.commit("changeUserMultiChoice", null);
@@ -31,12 +32,12 @@ export default class QuizHandler {
 
   initStoreValues(quizData) {
     let questionsRandomIds = this.randomizeQuestionsIds(quizData);
-    let options = [];
 
     this.store.commit("changeQuizState", quizStates.START);
     this.store.commit("changeQuizData", quizData);
     this.store.commit("changeQuestionsRandomIds", questionsRandomIds);
-    this.store.commit("changeQuestionOptions", options);
+    this.store.commit("changeQuestionOptions", []);
+    this.store.commit("changeUserAnswerHistory", []);
 
     this.store.commit("changeUserSingleChoice", null);
     this.store.commit("changeUserMultiChoice", null);
@@ -132,6 +133,7 @@ export default class QuizHandler {
         currentQuestionData["options"][correctAnswerIndex]
       ).toString();
       result = userAnswer === correctAnswer;
+      this._addItemToUserAnswerHistory(currentQuestionId, userAnswer, result);
     }
 
     if ("multi" === currentQuestionData["type"]) {
@@ -153,12 +155,14 @@ export default class QuizHandler {
       result =
         JSON.stringify(userAnswers.sort()) ===
         JSON.stringify(correctAnswers.sort());
+      this._addItemToUserAnswerHistory(currentQuestionId, userAnswers, result);
     }
 
     if ("text" === currentQuestionData["type"]) {
       userAnswer = this.store.state.userTextAnswer.trim().toLowerCase();
       correctAnswer = currentQuestionData["answer"].trim().toLowerCase();
       result = userAnswer === correctAnswer;
+      this._addItemToUserAnswerHistory(currentQuestionId, userAnswer, result);
     }
 
     if (result) {
@@ -169,6 +173,12 @@ export default class QuizHandler {
 
     this.store.commit("changeQuestionOptions", options);
     this.store.commit("changeQuizState", quizStates.CHECK);
+  }
+
+  _addItemToUserAnswerHistory(id, answer, isCorrect) {
+    let userAnswerHistory = this.store.state.userAnswerHistory;
+    userAnswerHistory.push({ id, answer, isCorrect });
+    this.store.commit("changeUserAnswerHistory", userAnswerHistory);
   }
 
   nextQuestion() {
@@ -286,5 +296,64 @@ export default class QuizHandler {
           displayedQuestionsNumber
       )
     };
+  }
+
+  getUserAnswerHistory() {
+    let userAnswerHistory = [];
+
+    for (let i = 0; i < this.store.state.userAnswerHistory.length; i++) {
+      let id = this.store.state.userAnswerHistory[i]["id"];
+      let answer = this.store.state.userAnswerHistory[i]["answer"];
+      let isCorrect = this.store.state.userAnswerHistory[i]["isCorrect"];
+      let questionData = this.store.state.quizData.questions[id];
+      let userAnswer = null;
+      let correctAnswer = null;
+
+      if ("single" === questionData.type) {
+        userAnswer = this._getQuestionOptionByHash(id, answer);
+        correctAnswer = questionData.options[questionData.correct[0] - 1];
+      }
+
+      if ("multi" === questionData.type) {
+        userAnswer = [];
+        for (let i = 0; i < answer.length; i++) {
+          userAnswer.push(this._getQuestionOptionByHash(id, answer[i]));
+        }
+
+        correctAnswer = [];
+        for (let i = 0; i < questionData.correct.length; i++) {
+          correctAnswer.push(questionData.options[questionData.correct[i] - 1]);
+        }
+      }
+
+      if ("text" === questionData.type) {
+        userAnswer = answer;
+        correctAnswer = questionData.answer;
+      }
+
+      userAnswerHistory.push({
+        id: id,
+        question: questionData.question,
+        type: questionData.type,
+        isCorrect: isCorrect,
+        userAnswer: userAnswer,
+        correctAnswer: correctAnswer
+      });
+    }
+    return userAnswerHistory;
+  }
+
+  _getQuestionOptionByHash(questionId, optionHash) {
+    let questionData = this.store.state.quizData.questions[questionId];
+    let option = null;
+
+    for (let i = 0; i < questionData.options.length; i++) {
+      if (optionHash === md5(questionData.options[i]).toString()) {
+        option = questionData.options[i];
+        break;
+      }
+    }
+
+    return option;
   }
 }
