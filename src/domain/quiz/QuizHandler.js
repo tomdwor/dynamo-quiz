@@ -162,7 +162,12 @@ export default class QuizHandler {
       userAnswer = this.store.state.userTextAnswer.trim().toLowerCase();
       correctAnswer = currentQuestionData["answer"].trim().toLowerCase();
       result = userAnswer === correctAnswer;
-      this._addItemToUserAnswerHistory(currentQuestionId, userAnswer, result);
+      let userOriginalAnswer = this.store.state.userTextAnswer.trim();
+      this._addItemToUserAnswerHistory(
+        currentQuestionId,
+        userOriginalAnswer,
+        result
+      );
     }
 
     if (result) {
@@ -335,6 +340,7 @@ export default class QuizHandler {
         id: id,
         question: questionData.question,
         type: questionData.type,
+        note: "note" in questionData ? questionData.note : null,
         isCorrect: isCorrect,
         userAnswer: userAnswer,
         correctAnswer: correctAnswer

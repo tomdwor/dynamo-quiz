@@ -2,10 +2,6 @@
 
 ## Current
 
-- [ ] quiz review
-    - [x] basic version
-    - [ ] UX update (styles, "Scroll to top" btn, etc.)
-    - [ ] display note if exists
 - [ ] proper data in example quizzes
 - [ ] keyboard controls
 - [ ] Markdown content with MathJax
@@ -49,12 +45,12 @@ Another answer types:
 
 Once a quiz is completed, display quiz review.
 
-- [ ] list of questions with statuses (correct/incorrect)
-- [ ] show correct answer
-- [ ] show user answer
-- [ ] filter: all / correct / incorrect
-- [ ] show explanation (if defined)
-- [ ] "Scroll to top" button
+- [x] list of questions with statuses (correct/incorrect)
+- [x] show correct answer
+- [x] show user answer
+- [x] filter: all / correct / incorrect
+- [x] show explanation (if defined)
+- [x] "Scroll to top" button
 
 
 ## Step 5: Quiz modes
