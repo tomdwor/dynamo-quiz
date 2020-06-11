@@ -28,6 +28,7 @@ export default class QuizHandler {
     this.store.commit("changeUserMultiChoice", null);
     this.store.commit("changeUserTextAnswer", "");
     this.store.commit("changeIsQuestionLoading", false);
+    this.store.commit("changeFocusedOption", null);
   }
 
   initStoreValues(quizData) {
@@ -43,6 +44,7 @@ export default class QuizHandler {
     this.store.commit("changeUserMultiChoice", null);
     this.store.commit("changeUserTextAnswer", "");
     this.store.commit("changeIsQuestionLoading", false);
+    this.store.commit("changeFocusedOption", 0);
   }
 
   getQuizState() {
@@ -193,6 +195,7 @@ export default class QuizHandler {
     this.store.commit("changeUserMultiChoice", null);
     this.store.commit("changeUserTextAnswer", "");
     this.store.commit("changeCurrentQuestionShuffledOptions", []);
+    this.store.commit("changeFocusedOption", 0);
 
     this.store.commit("changeIsQuestionLoading", true);
     let that = this;

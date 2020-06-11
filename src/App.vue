@@ -1,5 +1,11 @@
 <template>
-  <v-app>
+  <v-app
+    id="appContent"
+    v-bind:class="{
+      'hide-controls': hideControls,
+      'quiz-in-progress': isQuizInProgress
+    }"
+  >
     <TopNavi v-if="this.$router.currentRoute.name !== 'quiz'" />
     <v-content>
       <router-view />
@@ -20,6 +26,31 @@ export default {
     TopNavi,
     CommonFooter,
     QuizBottomNavi
+  },
+  data() {
+    return {
+      hideControls: false
+    };
+  },
+  computed: {
+    isQuizInProgress() {
+      let quizState = this.$store.state.quizState;
+      return ["ask", "check"].includes(quizState);
+    }
+  },
+  methods: {
+    hideControlsAfterInterval() {
+      this.hideControls = false;
+      clearTimeout(this.timer);
+      this.timer = setTimeout(() => {
+        this.hideControls = true;
+      }, 3000);
+    }
+  },
+  mounted() {
+    this.timer = null;
+    window.addEventListener("mousemove", this.hideControlsAfterInterval);
+    this.hideControlsAfterInterval();
   }
 };
 </script>
@@ -37,5 +68,9 @@ export default {
 
 .MathJax_Display {
   margin: 20px 0 !important;
+}
+
+#appContent.hide-controls.quiz-in-progress * {
+  cursor: none !important;
 }
 </style>

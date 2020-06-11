@@ -12,7 +12,12 @@
             <v-btn class="navi-btn" large v-on:click="exitQuiz">Cancel</v-btn>
           </v-col>
           <v-col class="py-4 text-right" cols="6">
-            <v-btn class="navi-btn" large color="primary" v-on:click="startQuiz"
+            <v-btn
+              id="start-quiz-btn"
+              class="navi-btn"
+              large
+              color="primary"
+              v-on:click="startQuiz"
               >Start quiz</v-btn
             >
           </v-col>
@@ -47,6 +52,7 @@
           <v-col class="py-4 text-right" cols="6">
             <v-btn
               v-if="quizState === 'ask'"
+              id="check-answer-btn"
               class="navi-btn"
               large
               color="primary"
@@ -56,6 +62,7 @@
             >
             <v-btn
               v-if="quizState === 'check'"
+              id="next-question-btn"
               class="navi-btn"
               large
               color="primary"

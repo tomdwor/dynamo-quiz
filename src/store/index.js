@@ -13,7 +13,8 @@ const state = {
   userTextAnswer: "",
   isQuestionLoading: false,
   currentQuestionShuffledOptions: [],
-  userAnswerHistory: null
+  userAnswerHistory: null,
+  focusedOption: null
 };
 
 const mutations = {
@@ -46,6 +47,9 @@ const mutations = {
   },
   changeUserAnswerHistory(state, value) {
     state.userAnswerHistory = value;
+  },
+  changeFocusedOption(state, value) {
+    state.focusedOption = value;
   }
 };
 

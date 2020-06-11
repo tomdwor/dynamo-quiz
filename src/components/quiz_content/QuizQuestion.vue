@@ -2,7 +2,10 @@
   <div>
     <v-row class="mb-3">
       <v-col>
-        <vue-mathjax :formula="currentQuestion.question"></vue-mathjax>
+        <vue-mathjax
+          :options="mathJaxOptions"
+          :formula="currentQuestion.question"
+        ></vue-mathjax>
       </v-col>
     </v-row>
     <v-row id="answer">
@@ -14,6 +17,7 @@
           <v-radio
             v-for="(option, index) in currentQuestion.options"
             :key="index"
+            :id="'single-option-' + index"
             :value="option.checksum"
             :disabled="quizState === 'check'"
             class="align-start"
@@ -23,12 +27,17 @@
                 outlined
                 v-bind:class="{
                   correct: quizState === 'check' && option.is_correct,
-                  incorrect: quizState === 'check' && !option.is_correct
+                  incorrect: quizState === 'check' && !option.is_correct,
+                  optionFocus: focusedOption === index
                 }"
+                v-on:click="updateFocusedOption(index)"
               >
                 <v-list-item three-line>
                   <v-list-item-content>
-                    <vue-mathjax :formula="option.value"></vue-mathjax>
+                    <vue-mathjax
+                      :options="mathJaxOptions"
+                      :formula="option.value"
+                    ></vue-mathjax>
                   </v-list-item-content>
                 </v-list-item>
               </v-card>
@@ -42,7 +51,7 @@
           <v-checkbox
             v-for="(option, index) in currentQuestion.options"
             :key="index"
-            :id="'toggle-' + option.id"
+            :id="'multi-option-' + index"
             :disabled="quizState === 'check'"
             :checked="userMultiChoice[index].value"
             :value="option.checksum"
@@ -60,12 +69,17 @@
                 outlined
                 v-bind:class="{
                   correct: quizState === 'check' && option.is_correct,
-                  incorrect: quizState === 'check' && !option.is_correct
+                  incorrect: quizState === 'check' && !option.is_correct,
+                  optionFocus: focusedOption === index
                 }"
+                v-on:click="updateFocusedOption(index)"
               >
                 <v-list-item three-line>
                   <v-list-item-content>
-                    <vue-mathjax :formula="option.value"></vue-mathjax>
+                    <vue-mathjax
+                      :options="mathJaxOptions"
+                      :formula="option.value"
+                    ></vue-mathjax>
                   </v-list-item-content>
                 </v-list-item>
               </v-card>
@@ -96,7 +110,10 @@
         >
           <h3 class="mb-4">Note</h3>
           <p>
-            <vue-mathjax :formula="currentQuestion.note"></vue-mathjax>
+            <vue-mathjax
+              :options="mathJaxOptions"
+              :formula="currentQuestion.note"
+            ></vue-mathjax>
           </p>
         </div>
       </v-col>
@@ -106,6 +123,8 @@
 
 <script>
 import { VueMathjax } from "vue-mathjax";
+import { mathJaxOptions } from "@/config.js";
+
 export default {
   components: {
     "vue-mathjax": VueMathjax
@@ -113,6 +132,11 @@ export default {
   name: "QuizQuestion",
   props: {
     quizHandler: Object
+  },
+  data() {
+    return {
+      mathJaxOptions: mathJaxOptions
+    };
   },
   computed: {
     quizState: function() {
@@ -152,6 +176,9 @@ export default {
         this.$store.commit("changeUserTextAnswer", value);
       }
     },
+    focusedOption: function() {
+      return this.$store.state.focusedOption;
+    },
     textAnswerCheckResult: function() {
       let userAnswer = this.userTextAnswer.trim();
       let correctAnswer = this.currentQuestion.answer.trim();
@@ -169,7 +196,68 @@ export default {
       this.userMultiChoice[index].value = !value;
       this.userMultiChoice[index].checksum = !value ? checksum : null;
       this.$store.commit("changeUserMultiChoice", this.userMultiChoice);
+    },
+    updateFocusedOption(index) {
+      this.$store.commit("changeFocusedOption", index);
+    },
+    mod(n, m) {
+      return ((n % m) + m) % m;
+    },
+    handleOptionFocusMove(isUp) {
+      if (!["single", "multi"].includes(this.currentQuestion.type)) {
+        return;
+      }
+      let delta = isUp ? -1 : 1;
+      let oldFocusedOption = this.$store.state.focusedOption;
+      let optionsNumb = this.currentQuestion.options.length;
+      let newFocusedOption = this.mod(oldFocusedOption + delta, optionsNumb);
+      this.$store.commit("changeFocusedOption", newFocusedOption);
+    },
+    handleKeyDownSpace() {
+      if ("single" === this.currentQuestion.type) {
+        let index = this.$store.state.focusedOption;
+        document.getElementById(`single-option-${index}`).click();
+      }
+      if ("multi" === this.currentQuestion.type) {
+        let index = this.$store.state.focusedOption;
+        document.getElementById(`multi-option-${index}`).click();
+      }
+    },
+    clickElementIfExists(element) {
+      if (typeof element != "undefined" && element != null) {
+        element.click();
+      }
+    },
+    handleKeyDownEnter() {
+      if ("ask" === this.quizState) {
+        let elem = document.getElementById(`check-answer-btn`);
+        this.clickElementIfExists(elem);
+      }
+      if ("check" === this.quizState) {
+        let elem = document.getElementById(`next-question-btn`);
+        this.clickElementIfExists(elem);
+      }
+    },
+    handleKeyDown(e) {
+      if (e.code === "Enter") {
+        this.handleKeyDownEnter();
+      }
+      if (e.code === "Space") {
+        this.handleKeyDownSpace();
+      }
+      if (e.code === "ArrowUp") {
+        this.handleOptionFocusMove(true);
+      }
+      if (e.code === "ArrowDown") {
+        this.handleOptionFocusMove(false);
+      }
     }
+  },
+  created() {
+    window.addEventListener("keydown", this.handleKeyDown);
+  },
+  destroyed() {
+    window.removeEventListener("keydown", this.handleKeyDown);
   },
   directives: {
     focus: {
@@ -229,6 +317,12 @@ export default {
 .v-item--active .incorrect,
 .v-input--checkbox.v-input--is-label-active .incorrect {
   background-color: #ffcdd2 !important;
+}
+
+@media only screen {
+  .optionFocus {
+    border: 2px dotted #aaa !important;
+  }
 }
 
 #textAnswerInput {
