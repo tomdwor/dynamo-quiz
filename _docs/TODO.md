@@ -3,10 +3,10 @@
 ## Current
 
 - [ ] proper data in example quizzes
-- [ ] keyboard controls
 - [ ] Markdown content with MathJax
 - [ ] embedding optional images (in: description, question, answer option, note)
 - [ ] separate data and config from repo + examples + README
+- [ ] language labels in separate files + language config
 
 
 ## Step 1: Basic app
@@ -65,8 +65,8 @@ Any additional details, fixes, adjustments.
 
 - [x] random order of answers
 - [x] text input autofocus
+- [x] keyboard controls
 - [ ] embedding optional images (in: description, question, answer option, note)
-- [ ] keyboard controls
 - [ ] Markdown content with MathJax
 - [ ] separate data and config from repo + examples + README
 - [ ] multi languages (one file with labels per language)
