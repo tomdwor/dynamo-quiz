@@ -3,8 +3,6 @@
 ## Current
 
 - [ ] proper data in example quizzes
-- [ ] Markdown content with MathJax
-- [ ] embedding optional images (in: description, question, answer option, note)
 - [ ] separate data and config from repo + examples + README
 - [ ] language labels in separate files + language config
 
@@ -23,9 +21,9 @@ Basic version of application.
 - [x] real content in quiz examples
 
 
-## Step 2: MathJax content
+## Step 2: Markdown and AsciiMath
 
-Allow using MathJax content.
+Allow using Markdown and AsciiMath content.
 
 - [x] quiz description
 - [x] question
@@ -66,8 +64,7 @@ Any additional details, fixes, adjustments.
 - [x] random order of answers
 - [x] text input autofocus
 - [x] keyboard controls
-- [ ] embedding optional images (in: description, question, answer option, note)
-- [ ] Markdown content with MathJax
+- [x] embedding optional images (in: description, question, answer option, note)
 - [ ] separate data and config from repo + examples + README
 - [ ] multi languages (one file with labels per language)
 - [ ] run random quiz

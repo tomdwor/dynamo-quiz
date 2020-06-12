@@ -39,3 +39,8 @@ npm run test:unit
 
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
+
+
+## Markdown content
+
+- [markdown-it-vue](http://www.aqcoder.com/markdown)
