@@ -41,6 +41,13 @@ npm run test:unit
 See [Configuration Reference](https://cli.vuejs.org/config/).
 
 
-## Markdown content
+## Content features
 
-- [markdown-it-vue](http://www.aqcoder.com/markdown)
+- [markdown-it-vue](https://github.com/ravenq/markdown-it-vue)
+    - [markdown-it-vue features](http://www.aqcoder.com/markdown)
+- [Emoji Cheat Sheet](https://www.webfx.com/tools/emoji-cheat-sheet/)
+- [Font Awesome Icons](https://fontawesome.com/icons?from=io)
+- [echarts](https://echarts.apache.org/en/index.html)
+- [mermaid-js](https://github.com/mermaid-js/mermaid)
+    - [mermaid-js editor](https://mermaid-js.github.io/mermaid-live-editor/)
+- [flowchart.js](https://flowchart.js.org/)
