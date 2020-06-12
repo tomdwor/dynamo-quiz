@@ -1,0 +1,65 @@
+.v-application .markdown-body code {
+  color: #24292e;
+  display: inline;
+  box-shadow: none;
+  font-weight: normal;
+  background-color: rgba(27,31,35,.05);
+  border-radius: 3px;
+  font-size: 85%;
+  margin: 0;
+  padding: .2em .4em;
+  font-family: SFMono-Regular,Consolas,Liberation Mono,Menlo,Courier,monospace;
+}
+
+.v-application .markdown-body pre code {
+    font-family: monospace,monospace;
+    font-size: 1em;
+}
+
+.v-application .markdown-body pre code {
+    background: none;
+}
+
+.v-application .markdown-body .markdown-it-vue-alter {
+    font-size: 15px;
+}
+
+.v-application .markdown-body .markdown-it-vue-alter-success {
+    border: 1px solid #C8E6C9;
+    background-color: #E8F5E9;
+}
+
+.v-application .markdown-body .markdown-it-vue-alert-icon-success {
+    color: #4CAF50;
+}
+
+.v-application .markdown-body .markdown-it-vue-alter-info {
+    border: 1px solid #BBDEFB;
+    background-color: #E3F2FD;
+}
+
+.v-application .markdown-body .markdown-it-vue-alert-icon-info {
+    color: #2196F3;
+}
+
+.v-application .markdown-body .markdown-it-vue-alter-warning {
+    border: 1px solid #FFE082;
+    background-color: #FFFDE7;
+}
+
+.v-application .markdown-body .markdown-it-vue-alert-icon-warning {
+    color: #FFC107;
+}
+
+.v-application .markdown-body .markdown-it-vue-alter-error {
+    border: 1px solid #FFCDD2;
+    background-color: #FFEBEE;
+}
+
+.v-application .markdown-body .markdown-it-vue-alert-icon-error {
+    color: #F44336;
+}
+
+.v-application .markdown-body:after, .v-application .markdown-body:before {
+    display: none;
+}

@@ -2,10 +2,7 @@
   <div>
     <v-row class="mb-3">
       <v-col>
-        <vue-mathjax
-          :options="mathJaxOptions"
-          :formula="currentQuestion.question"
-        ></vue-mathjax>
+        <markdown-it-vue class="md-body" :content="currentQuestion.question" />
       </v-col>
     </v-row>
     <v-row id="answer">
@@ -34,10 +31,7 @@
               >
                 <v-list-item three-line>
                   <v-list-item-content>
-                    <vue-mathjax
-                      :options="mathJaxOptions"
-                      :formula="option.value"
-                    ></vue-mathjax>
+                    <markdown-it-vue class="md-body" :content="option.value" />
                   </v-list-item-content>
                 </v-list-item>
               </v-card>
@@ -76,10 +70,7 @@
               >
                 <v-list-item three-line>
                   <v-list-item-content>
-                    <vue-mathjax
-                      :options="mathJaxOptions"
-                      :formula="option.value"
-                    ></vue-mathjax>
+                    <markdown-it-vue class="md-body" :content="option.value" />
                   </v-list-item-content>
                 </v-list-item>
               </v-card>
@@ -110,10 +101,7 @@
         >
           <h3 class="mb-4">Note</h3>
           <p>
-            <vue-mathjax
-              :options="mathJaxOptions"
-              :formula="currentQuestion.note"
-            ></vue-mathjax>
+            <markdown-it-vue class="md-body" :content="currentQuestion.note" />
           </p>
         </div>
       </v-col>
@@ -122,21 +110,16 @@
 </template>
 
 <script>
-import { VueMathjax } from "vue-mathjax";
-import { mathJaxOptions } from "@/config.js";
+import MarkdownItVue from "markdown-it-vue";
+import "markdown-it-vue/dist/markdown-it-vue.css";
 
 export default {
   components: {
-    "vue-mathjax": VueMathjax
+    MarkdownItVue
   },
   name: "QuizQuestion",
   props: {
     quizHandler: Object
-  },
-  data() {
-    return {
-      mathJaxOptions: mathJaxOptions
-    };
   },
   computed: {
     quizState: function() {

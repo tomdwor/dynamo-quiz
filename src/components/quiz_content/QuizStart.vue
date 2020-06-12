@@ -7,10 +7,7 @@
           <i>{{ quizStatistics.questionsNumberInfo }}</i>
         </p>
         <p class="mt-6">
-          <vue-mathjax
-            :options="mathJaxOptions"
-            :formula="quizDescription"
-          ></vue-mathjax>
+          <markdown-it-vue class="md-body" :content="content" />
         </p>
       </v-col>
     </v-row>
@@ -18,21 +15,16 @@
 </template>
 
 <script>
-import { VueMathjax } from "vue-mathjax";
-import { mathJaxOptions } from "@/config.js";
+import MarkdownItVue from "markdown-it-vue";
+import "markdown-it-vue/dist/markdown-it-vue.css";
 
 export default {
   components: {
-    "vue-mathjax": VueMathjax
+    MarkdownItVue
   },
   name: "QuizStart",
   props: {
     quizHandler: Object
-  },
-  data() {
-    return {
-      mathJaxOptions: mathJaxOptions
-    };
   },
   computed: {
     quizState: function() {
@@ -41,7 +33,7 @@ export default {
     quizTitle: function() {
       return this.quizHandler.getQuizTitle();
     },
-    quizDescription: function() {
+    content: function() {
       return this.quizHandler.getQuizDescription();
     },
     quizStatistics() {

@@ -82,19 +82,16 @@
                 Question {{ index + 1 }}
               </p>
               <p class="my-6">
-                <vue-mathjax
-                  :options="mathJaxOptions"
-                  :formula="item.question"
-                ></vue-mathjax>
+                <markdown-it-vue class="md-body" :content="item.question" />
               </p>
               <div v-if="'single' === item.type" class="my-6">
                 <p class="font-weight-bold">Selected answer:</p>
                 <ul>
                   <li>
-                    <vue-mathjax
-                      :options="mathJaxOptions"
-                      :formula="item.userAnswer"
-                    ></vue-mathjax>
+                    <markdown-it-vue
+                      class="md-body"
+                      :content="item.userAnswer"
+                    />
                   </li>
                 </ul>
               </div>
@@ -102,10 +99,7 @@
                 <p class="font-weight-bold">Selected answers:</p>
                 <ul>
                   <li v-for="answer in item.userAnswer" :key="answer">
-                    <vue-mathjax
-                      :options="mathJaxOptions"
-                      :formula="answer"
-                    ></vue-mathjax>
+                    <markdown-it-vue class="md-body" :content="answer" />
                   </li>
                 </ul>
               </div>
@@ -124,10 +118,10 @@
                   <p class="font-weight-bold">Correct answer:</p>
                   <ul>
                     <li>
-                      <vue-mathjax
-                        :options="mathJaxOptions"
-                        :formula="item.correctAnswer"
-                      ></vue-mathjax>
+                      <markdown-it-vue
+                        class="md-body"
+                        :content="item.correctAnswer"
+                      />
                     </li>
                   </ul>
                 </div>
@@ -135,10 +129,7 @@
                   <p class="font-weight-bold">Correct answers:</p>
                   <ul>
                     <li v-for="answer in item.correctAnswer" :key="answer">
-                      <vue-mathjax
-                        :options="mathJaxOptions"
-                        :formula="answer"
-                      ></vue-mathjax>
+                      <markdown-it-vue class="md-body" :content="answer" />
                     </li>
                   </ul>
                 </div>
@@ -150,10 +141,7 @@
               <div v-if="item.note !== null" class="my-6">
                 <p class="font-weight-bold">Note:</p>
                 <p class="mb-6">
-                  <vue-mathjax
-                    :options="mathJaxOptions"
-                    :formula="item.note"
-                  ></vue-mathjax>
+                  <markdown-it-vue class="md-body" :content="item.note" />
                 </p>
               </div>
             </div>
@@ -165,12 +153,12 @@
 </template>
 
 <script>
-import { VueMathjax } from "vue-mathjax";
-import { mathJaxOptions } from "@/config.js";
+import MarkdownItVue from "markdown-it-vue";
+import "markdown-it-vue/dist/markdown-it-vue.css";
 
 export default {
   components: {
-    "vue-mathjax": VueMathjax
+    MarkdownItVue
   },
   name: "QuizReview",
   props: {
@@ -178,7 +166,6 @@ export default {
   },
   data() {
     return {
-      mathJaxOptions: mathJaxOptions,
       showAnswers: false,
       toggleFilter: 0,
       fab: false

@@ -7,9 +7,9 @@
     }"
   >
     <TopNavi v-if="this.$router.currentRoute.name !== 'quiz'" />
-    <v-content>
+    <v-main>
       <router-view />
-    </v-content>
+    </v-main>
     <QuizBottomNavi v-if="this.$router.currentRoute.name === 'quiz'" />
     <CommonFooter v-else />
   </v-app>
