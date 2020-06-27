@@ -51,13 +51,26 @@ Once a quiz is completed, display quiz review.
 - [x] "Scroll to top" button
 
 
-## Step 5: Quiz modes
+## Step 5: Story option
 
-- [ ] practice mode
-- [ ] exam mode
+- [ ] Story option in quiz config
+    - [ ] constant questions order
+    - [ ] content pages allowed (between quiz questions)
 
 
-## Step 6: App adjustment
+## Step 6: Quiz modes
+
+- [ ] User at start of the quiz can choose mode
+    
+    Modes:
+    - practice mode - checking answers during quiz (current behavior)
+    - exam mode - without checking answers during quiz
+
+    Exam mode is not allowed if story option is enabled.
+
+
+
+## Step 7: App adjustment
 
 Any additional details, fixes, adjustments.
 
@@ -72,10 +85,10 @@ Any additional details, fixes, adjustments.
 - [ ] other question types
     - [ ] text-two-ways
     - [ ] display-confirm
-    - [ ] draw-confirm
+- [ ] valid quiz config - check if quiz JSON is correct
 
 
-## Step 7: Quiz configurations
+## Step 8: App configurations
 
 - [ ] configurations
     - [ ] single quiz
