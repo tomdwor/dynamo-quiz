@@ -2,7 +2,6 @@
 
 ## Current
 
-- [ ] fix css issues for header and footer on quizzes list
 - [ ] proper data in example quizzes
 - [ ] separate data and config from repo + examples + README
 - [ ] language labels in separate files + language config
