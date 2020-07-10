@@ -97,6 +97,12 @@ Any additional details, fixes, adjustments.
 - [ ] tutorial / example files with config
 
 
+## Step 9: Quiz list filters
+
+- [ ] filter quizzes
+- [ ] play random quizzes from filtered list (one after another)
+
+
 ## Other
 
 - [ ] Dynamo Quiz Editor (another Vue.js project)
