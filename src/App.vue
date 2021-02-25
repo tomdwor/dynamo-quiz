@@ -66,10 +66,6 @@ export default {
   opacity: 0;
 }
 
-.MathJax_Display {
-  margin: 20px 0 !important;
-}
-
 #appContent.hide-controls.quiz-in-progress * {
   cursor: none !important;
 }
