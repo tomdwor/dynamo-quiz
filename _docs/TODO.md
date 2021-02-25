@@ -2,6 +2,11 @@
 
 ## Current
 
+- [ ] mobile UX fixes
+  - [ ] Quiz review: Show answers - loader
+  - [ ] Text question: If mobile device, don't focus on input automatically
+  - [ ] Options: If mobile device, don't display dotted border for active
+  - [ ] Options: dotted border - reduce padding if border is displayed
 - [ ] proper data in example quizzes
 - [ ] language labels in separate files + language config
 
