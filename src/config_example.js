@@ -4,7 +4,7 @@ const QUIZ_PAGE_NAME = "Dynamo Quiz";
 const QUIZ_PAGE_FOOTER = "Powered by Dynamo Quiz";
 const ABOUT_PAGE_CONTENT =
   "DynamoQuiz is an open source quiz solution for web browsers.<br>" +
-  '<a href="https://github.com/tomdwor/dynamoquiz">github.com/tomdwor/dynamoquiz</a>.';
+  "Source: <a href=\"https://github.com/tomdwor/dynamoquiz\">https://github.com/tomdwor/dynamoquiz</a>.";
 
 export {
   QUIZZES_LIST_DATA_URL,
