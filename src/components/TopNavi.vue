@@ -9,15 +9,14 @@
         transition="scale-transition"
         width="40"
       />
-
-      <v-img
-        alt="Vuetify Name"
+      <span
+        id="pageName"
         class="shrink mt-0 hidden-sm-and-down"
         contain
         min-width="160"
-        src="@/assets/dynamoquiz_name.png"
         width="160"
-      />
+        >{{ quizPageName }}</span
+      >
     </div>
 
     <v-spacer></v-spacer>
@@ -30,7 +29,22 @@
 </template>
 
 <script>
+import { QUIZ_PAGE_NAME } from "@/config.js";
+
 export default {
-  name: "TopNavi"
+  name: "TopNavi",
+  data() {
+    return {
+      quizPageName: QUIZ_PAGE_NAME
+    };
+  }
 };
 </script>
+
+<style>
+#pageName {
+  margin-left: 10px;
+  font-size: 22px;
+  font-weight: bold;
+}
+</style>

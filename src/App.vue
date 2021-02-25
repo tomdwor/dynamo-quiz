@@ -19,6 +19,7 @@
 import TopNavi from "@/components/TopNavi.vue";
 import CommonFooter from "@/components/CommonFooter.vue";
 import QuizBottomNavi from "@/components/QuizBottomNavi.vue";
+import { QUIZ_PAGE_NAME } from "@/config.js";
 
 export default {
   name: "App",
@@ -46,6 +47,9 @@ export default {
         this.hideControls = true;
       }, 3000);
     }
+  },
+  created () {
+      document.title = QUIZ_PAGE_NAME;
   },
   mounted() {
     this.timer = null;

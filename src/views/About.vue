@@ -13,7 +13,7 @@
 import { ABOUT_PAGE_CONTENT } from "@/config.js";
 
 export default {
-  name: "about",
+  name: "About",
   data() {
     return {
       aboutContent: ABOUT_PAGE_CONTENT
