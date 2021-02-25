@@ -3,7 +3,6 @@
 ## Current
 
 - [ ] proper data in example quizzes
-- [ ] separate data and config from repo + examples + README
 - [ ] language labels in separate files + language config
 
 
@@ -78,7 +77,7 @@ Any additional details, fixes, adjustments.
 - [x] text input autofocus
 - [x] keyboard controls
 - [x] embedding optional images (in: description, question, answer option, note)
-- [ ] separate data and config from repo + examples + README
+- [x] separate data and config from repo + examples + README
 - [ ] multi languages (one file with labels per language)
 - [ ] run random quiz
 - [ ] about page content
