@@ -48,8 +48,8 @@ export default {
       }, 3000);
     }
   },
-  created () {
-      document.title = QUIZ_PAGE_NAME;
+  created() {
+    document.title = QUIZ_PAGE_NAME;
   },
   mounted() {
     this.timer = null;

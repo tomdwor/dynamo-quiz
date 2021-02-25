@@ -234,6 +234,9 @@ export default {
       if (e.code === "ArrowDown") {
         this.handleOptionFocusMove(false);
       }
+    },
+    isMobileDevice() {
+      return;
     }
   },
   created() {
@@ -245,7 +248,12 @@ export default {
   directives: {
     focus: {
       inserted: function(el) {
-        el.focus();
+        let isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
+          navigator.userAgent
+        );
+        if (!isMobile) {
+          el.focus();
+        }
       }
     }
   }
@@ -302,9 +310,10 @@ export default {
   background-color: #ffcdd2 !important;
 }
 
-@media only screen {
+@media only screen and (min-width: 1224px) {
   .optionFocus {
     border: 2px dotted #aaa !important;
+    margin: -1px;
   }
 }
 
