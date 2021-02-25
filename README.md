@@ -1,8 +1,17 @@
 # Dynamo Quiz
 
-A Vue.js quiz application.
+It's an open source quiz solution for web browsers based on Vue.js.
 
 ## Project setup
+
+- copy `src/config_example.js` into `src/config.js`
+- copy `public/data_example/` into `public/data/`
+- adjust copied config and data files
+
+
+## Commands
+
+### Installs the dependencies
 ```
 npm install
 ```
