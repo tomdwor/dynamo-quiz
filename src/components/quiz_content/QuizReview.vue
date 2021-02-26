@@ -201,10 +201,10 @@ export default {
   },
   methods: {
     toggleShowAnswers() {
-      if(!this.showAnswers && isMobileDevice()) {
+      if (!this.showAnswers && isMobileDevice()) {
         this.isLoading = true;
         let that = this;
-        setTimeout(() => that.isLoading = false, 800);
+        setTimeout(() => (that.isLoading = false), 800);
       }
       this.showAnswers = !this.showAnswers;
     },

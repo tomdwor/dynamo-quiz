@@ -238,8 +238,8 @@ export default {
       }
     },
     handleTextAnswerInputFocus() {
-      if(isMobileDevice()) {
-        window.scrollTo(0,document.body.scrollHeight);
+      if (isMobileDevice()) {
+        window.scrollTo(0, document.body.scrollHeight);
       }
     }
   },

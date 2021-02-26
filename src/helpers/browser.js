@@ -5,6 +5,4 @@ let isMobileDevice = function() {
   return isMobile;
 };
 
-export {
-  isMobileDevice
-};
+export { isMobileDevice };
