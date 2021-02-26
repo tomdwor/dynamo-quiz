@@ -310,7 +310,7 @@ export default {
   background-color: #ffcdd2 !important;
 }
 
-@media only screen and (min-width: 1224px) {
+@media only screen and (min-width: 960px) {
   .optionFocus {
     border: 2px dotted #aaa !important;
     margin: -1px;

@@ -21,7 +21,7 @@
               <v-col class="pt-4 text-right" cols="4">
                 <v-dialog v-model="dialog" persistent max-width="290">
                   <template v-slot:activator="{ on }">
-                    <v-btn v-on="on">Exit quiz</v-btn>
+                    <v-btn v-on="on">Exit</v-btn>
                   </template>
                   <v-card>
                     <v-card-title class="headline">Exit quiz</v-card-title>
