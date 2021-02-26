@@ -113,7 +113,7 @@
 <script>
 import MarkdownItVue from "markdown-it-vue";
 import "markdown-it-vue/dist/markdown-it-vue.css";
-import { isMobileDevice } from "@/helpers/browser.js";
+import { isMobileDevice } from "@/domain/utils/browser.js";
 
 export default {
   components: {
