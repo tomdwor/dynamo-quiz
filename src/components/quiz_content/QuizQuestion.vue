@@ -336,7 +336,8 @@ export default {
   background-color: #ffcdd2 !important;
 }
 
-.v-list--three-line .v-list-item, .v-list-item--three-line {
-    min-height: 72px !important;
+.v-list--three-line .v-list-item,
+.v-list-item--three-line {
+  min-height: 72px !important;
 }
 </style>
