@@ -196,8 +196,10 @@ export default class QuizHandler {
     this.store.commit("changeUserTextAnswer", "");
     this.store.commit("changeCurrentQuestionShuffledOptions", []);
     this.store.commit("changeFocusedOption", 0);
-
     this.store.commit("changeIsQuestionLoading", true);
+
+    window.scrollTo({ top: 0 });
+
     let that = this;
     setTimeout(function() {
       if (
