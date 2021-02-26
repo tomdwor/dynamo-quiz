@@ -28,7 +28,6 @@
                 <tr class="grey lighten-4">
                   <th>Quiz name</th>
                   <th>Category</th>
-                  <th>&nbsp;</th>
                 </tr>
               </template>
               <template slot="item" slot-scope="props">
@@ -39,15 +38,6 @@
                     }}</a>
                   </td>
                   <td class="text-left">{{ props.item.category }}</td>
-                  <td class="text-right">
-                    <v-btn
-                      icon
-                      class="primary--text ma-0"
-                      :href="'/quiz/' + props.item.id"
-                    >
-                      <v-icon>play_circle_filled</v-icon>
-                    </v-btn>
-                  </td>
                 </tr>
               </template>
             </v-data-table>
@@ -96,5 +86,10 @@ export default {
 #quizzesList table td,
 #quizzesList table th {
   font-size: 16px !important;
+}
+
+#quizzesList table th {
+  padding: 12px 16px;
+  text-align: left;
 }
 </style>

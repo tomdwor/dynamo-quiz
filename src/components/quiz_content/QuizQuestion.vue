@@ -112,6 +112,7 @@
 <script>
 import MarkdownItVue from "markdown-it-vue";
 import "markdown-it-vue/dist/markdown-it-vue.css";
+import { isMobileDevice } from "@/helpers/browser.js";
 
 export default {
   components: {
@@ -248,10 +249,7 @@ export default {
   directives: {
     focus: {
       inserted: function(el) {
-        let isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
-          navigator.userAgent
-        );
-        if (!isMobile) {
+        if (!isMobileDevice()) {
           el.focus();
         }
       }
