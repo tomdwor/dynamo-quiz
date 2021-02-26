@@ -3,7 +3,7 @@
 ## Current
 
 - [ ] mobile UX fixes
-  - [ ] Quiz review: Show answers - loader
+  - [x] Quiz review: Show answers - loader
   - [x] Text answer: if mobile on blur scroll page down to the bottom
 - [ ] proper data in example quizzes
 - [ ] language labels in separate files + language config
