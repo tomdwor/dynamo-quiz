@@ -198,8 +198,6 @@ export default class QuizHandler {
     this.store.commit("changeFocusedOption", 0);
     this.store.commit("changeIsQuestionLoading", true);
 
-    window.scrollTo({ top: 0 });
-
     let that = this;
     setTimeout(function() {
       if (
@@ -209,6 +207,7 @@ export default class QuizHandler {
       } else {
         that.store.commit("changeQuizState", quizStates.ASK);
       }
+      window.scrollTo({ top: 0 });
       that.store.commit("changeIsQuestionLoading", false);
     }, 500);
   }
