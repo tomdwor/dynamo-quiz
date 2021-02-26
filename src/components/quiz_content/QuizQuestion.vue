@@ -80,7 +80,7 @@
         <div v-if="currentQuestion.type === 'text'">
           <input
             id="textAnswerInput"
-            class="mb-3"
+            class="mb-4"
             v-model="userTextAnswer"
             autocomplete="off"
             v-bind:class="{ [textAnswerCheckResult]: quizState === 'check' }"
