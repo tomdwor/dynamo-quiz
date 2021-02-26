@@ -80,6 +80,7 @@
         <div v-if="currentQuestion.type === 'text'">
           <input
             id="textAnswerInput"
+            class="mb-3"
             v-model="userTextAnswer"
             autocomplete="off"
             v-bind:class="{ [textAnswerCheckResult]: quizState === 'check' }"
@@ -239,7 +240,7 @@ export default {
     },
     handleTextAnswerInputFocus() {
       if (isMobileDevice()) {
-        setTimeout(() => window.scrollTo(0, document.body.scrollHeight), 400);
+        window.scrollTo(0, document.body.scrollHeight);
       }
     }
   },
