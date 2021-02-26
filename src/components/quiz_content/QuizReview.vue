@@ -216,7 +216,7 @@ export default {
 }
 
 #options .v-input--selection-controls__input {
-  margin-top: 32px;
+  margin-top: 24px;
 }
 
 #options label,

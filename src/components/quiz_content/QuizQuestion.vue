@@ -5,7 +5,7 @@
         <markdown-it-vue class="md-body" :content="currentQuestion.question" />
       </v-col>
     </v-row>
-    <v-row id="answer">
+    <v-row id="answer" class="mb-5">
       <v-col>
         <v-radio-group
           v-if="currentQuestion.type === 'single'"
@@ -80,7 +80,6 @@
         <div v-if="currentQuestion.type === 'text'">
           <input
             id="textAnswerInput"
-            class="mb-4"
             v-model="userTextAnswer"
             autocomplete="off"
             v-bind:class="{ [textAnswerCheckResult]: quizState === 'check' }"
@@ -240,7 +239,7 @@ export default {
     },
     handleTextAnswerInputFocus() {
       if (isMobileDevice()) {
-        window.scrollTo(0, document.body.scrollHeight);
+        setTimeout(() => window.scrollTo(0, document.body.scrollHeight), 400);
       }
     }
   },
@@ -272,7 +271,7 @@ export default {
 }
 
 #answer .v-input--selection-controls__input {
-  margin-top: 32px;
+  margin-top: 24px;
 }
 
 #answer .v-input__slot {
@@ -335,5 +334,9 @@ export default {
 
 #textAnswerInput.incorrect {
   background-color: #ffcdd2 !important;
+}
+
+.v-list--three-line .v-list-item, .v-list-item--three-line {
+    min-height: 72px !important;
 }
 </style>
