@@ -84,6 +84,7 @@
             autocomplete="off"
             v-bind:class="{ [textAnswerCheckResult]: quizState === 'check' }"
             v-focus
+            @focus="handleTextAnswerInputFocus()"
           />
           <div
             v-if="
@@ -236,8 +237,10 @@ export default {
         this.handleOptionFocusMove(false);
       }
     },
-    isMobileDevice() {
-      return;
+    handleTextAnswerInputFocus() {
+      if(isMobileDevice()) {
+        window.scrollTo(0,document.body.scrollHeight);
+      }
     }
   },
   created() {
