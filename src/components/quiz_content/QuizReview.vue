@@ -149,20 +149,16 @@
         </div>
       </v-col>
     </v-row>
-    <Loader :isLoading="isLoading" />
   </div>
 </template>
 
 <script>
 import MarkdownItVue from "markdown-it-vue";
 import "markdown-it-vue/dist/markdown-it-vue.css";
-import Loader from "@/components/Loader.vue";
-import { isMobileDevice } from "@/helpers/browser.js";
 
 export default {
   components: {
-    MarkdownItVue,
-    Loader
+    MarkdownItVue
   },
   name: "QuizReview",
   props: {
@@ -172,8 +168,7 @@ export default {
     return {
       showAnswers: false,
       toggleFilter: 0,
-      fab: false,
-      isLoading: false
+      fab: false
     };
   },
   computed: {
@@ -201,11 +196,6 @@ export default {
   },
   methods: {
     toggleShowAnswers() {
-      if (!this.showAnswers && isMobileDevice()) {
-        this.isLoading = true;
-        let that = this;
-        setTimeout(() => (that.isLoading = false), 800);
-      }
       this.showAnswers = !this.showAnswers;
     },
     onScroll(e) {
