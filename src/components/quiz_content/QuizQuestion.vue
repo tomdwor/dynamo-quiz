@@ -239,7 +239,7 @@ export default {
     },
     handleTextAnswerInputFocus() {
       if (isMobileDevice()) {
-        setTimeout(() => window.scrollTo(0, document.body.scrollHeight), 400);
+        setTimeout(() => window.scrollTo(0, document.body.scrollHeight), 200);
       }
     }
   },
