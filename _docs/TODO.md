@@ -53,14 +53,19 @@ Once a quiz is completed, display quiz review.
 - [x] "Scroll to top" button
 
 
-## Step 5: Story option
+## Step 5: Collective quiz
+
+Possibility to compose a bigger quiz from smaller existing.
+
+
+## Step 6: Story option
 
 - [ ] Story option in quiz config
     - [ ] constant questions order
     - [ ] content pages allowed (between quiz questions)
 
 
-## Step 6: Quiz modes
+## Step 7: Quiz modes
 
 - [ ] User at start of the quiz can choose mode
     
@@ -72,7 +77,7 @@ Once a quiz is completed, display quiz review.
 
 
 
-## Step 7: App adjustment
+## Step 8: App adjustment
 
 Any additional details, fixes, adjustments.
 
@@ -90,7 +95,7 @@ Any additional details, fixes, adjustments.
 - [ ] valid quiz config - check if quiz JSON is correct
 
 
-## Step 8: App configurations
+## Step 9: App configurations
 
 - [ ] configurations
     - [ ] single quiz
@@ -99,7 +104,7 @@ Any additional details, fixes, adjustments.
 - [ ] tutorial / example files with config
 
 
-## Step 9: Quiz list filters
+## Step 10: Quiz list filters
 
 - [ ] filter quizzes
 - [ ] play random quizzes from filtered list (one after another)
