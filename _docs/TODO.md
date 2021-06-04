@@ -2,7 +2,6 @@
 
 ## Current
 
-- [ ] quiz review - strikethrough for incorrect text answers
 - [ ] mobile UX fixes
   - [x] Quiz review: Show answers - loader
   - [x] Text answer: if mobile on blur scroll page down to the bottom

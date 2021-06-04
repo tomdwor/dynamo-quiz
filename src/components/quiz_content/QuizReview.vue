@@ -105,7 +105,8 @@
               </div>
               <div v-if="'text' === item.type" class="my-6">
                 <p class="font-weight-bold">User answer:</p>
-                <p class="pl-6 font-italic">{{ item.userAnswer }}</p>
+                <p v-if="item.isCorrect" class="pl-6 font-italic">{{ item.userAnswer }}</p>
+                <p v-else class="pl-6 font-italic"><s>{{ item.userAnswer }}</s></p>
               </div>
               <div
                 v-if="
